@@ -17,7 +17,7 @@
 ---------------------------------------------
  
 Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o `NPM` instalados em seu computador:
-- para usuários windows acesse [o site do nodejs para download](https://nodejs.org/en/download/), baixe a versão adequada para sua máquina, e faça o clássico `next next finish`
+- para usuários windows acesse [o site do nodejs para download](https://nodejs.org/en/download/), baixe a versão adequada para sua máquina, e faça o clássico _next > next > finish_.
 - para usuários Linux:
    - Fedora: `dnf install nodejs`
    - Ubuntu: `apt install nodejs npm`
@@ -29,16 +29,15 @@ Crie manualmente a seguinte estrutura de arquivos:
 ```bash
 tutorial/
 └─ server/
-    └─ src/
-        ├─ main.ts
-        └─ create-database.ts
+   └─ src/
+      ├─ main.ts            # onde faremos todos os endpoints de nossa aplicação
+      └─ create-database.ts # onde sera escrito as regras de criação do banco sqlite
 ```
  
 ### 2.2 - Instalação de dependências
  
-Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal\New Terminal`, execute os comandos abaixo:
- 
- 
+Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal > New Terminal`, execute os comandos abaixo:
+  
 ```bash
 # criação do arquivo de configuração do projeto
 npm init -y
@@ -83,7 +82,7 @@ Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
  
 #### 2.2.4 - O que aconteceu quando é executado o comando `npm install --save-dev @types/node @types/express @types/sqlite3`
  
-Assim como o comando anterior, instala bibliotecas como bibliotecas necessárias para o desenvolvimento da aplicação, porém estas bibliotecas são utilizadas para ajudar o `vscode` com o `auto complete`, facilitando assim a escrita do código, de fato estas bibliotecas não são essenciais para o desenvolvimento mas ela ajuda o `typescript` e consequentemente o `vscode` a entender os tipos e dependências das bibliotecas `express`, `sqlite3` e do próprio `NodeJs`.
+Assim como o comando anterior, instala bibliotecas como bibliotecas necessárias para o desenvolvimento da aplicação, porém estas bibliotecas são utilizadas para ajudar o `vscode` com o _auto complete_, facilitando assim a escrita do código, de fato estas bibliotecas não são essenciais para o desenvolvimento mas ela ajuda o `typescript` e consequentemente o `vscode` a entender os tipos e dependências das bibliotecas `express`, `sqlite3` e do próprio `NodeJs`.
  
 #### 2.2.5 - O que aconteceu quando é executado o comando `npx tsc --init`
  
@@ -94,16 +93,16 @@ Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo 
 ### 2.3 - Estrutura final de arquivos
  
 ```bash
-tutorial/                     # criado pelo desenvolvedor
-└─ server/                   # criado pelo desenvolvedor
-    ├─ node_modules/          # criado ao executar `npm install ...`
-    ├─ dist/                  # será criado futuramente ao executar `npm run build`
-    ├─ src/                   # criado pelo desenvolvedor
-    │   ├─ main.ts            # criado pelo desenvolvedor
-    │   └─ create-database.ts # criado pelo desenvolvedor
-    ├─ package.json           # criado ao executar `npm init`
-    ├─ package-lock.json      # criado ao executar `npm install ...`
-    └─ tsconfig.json          # criado ao executar `npx tsc --init`
+tutorial/                   # criado pelo desenvolvedor
+└─ server/                  # criado pelo desenvolvedor
+   ├─ node_modules/         # criado ao executar `npm install ...`
+   ├─ dist/                 # será criado futuramente ao executar `npm run build`
+   ├─ src/                  # criado pelo desenvolvedor
+   │  ├─ main.ts            # criado pelo desenvolvedor
+   │  └─ create-database.ts # criado pelo desenvolvedor
+   ├─ package.json          # criado ao executar `npm init`
+   ├─ package-lock.json     # criado ao executar `npm install ...`
+   └─ tsconfig.json         # criado ao executar `npx tsc --init`
 ```
  
 ### 2.4 - Configuração do projeto `package.json`
