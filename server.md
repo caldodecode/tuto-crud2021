@@ -94,10 +94,10 @@ Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo 
 ### 2.3 - Estrutura final de arquivos
  
 ```bash
-tutorial/                      # criado pelo desenvolvedor
-└── server/                    # criado pelo desenvolvedor
+tutorial/                     # criado pelo desenvolvedor
+└── server/                   # criado pelo desenvolvedor
    ├── node_modules/          # criado ao executar `npm install ...`
-   ├── dist/                  # criado ao executar `npm run build`      
+   ├── dist/                  # será criado futuramente ao executar `npm run build`
    ├── src/                   # criado pelo desenvolvedor
    │   ├── main.ts            # criado pelo desenvolvedor
    │   └── create-database.ts # criado pelo desenvolvedor
