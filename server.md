@@ -39,11 +39,20 @@ tutorial/                   # pasta raiz geral de nosso progeto
 Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal > New Terminal`, execute os comandos abaixo:
   
 ```bash
-npm init -y                                                      # criação do arquivo de configuração do projeto
-npm install express sqlite sqlite3                               # instalação de bibliotecas necessárias para execução da aplicação
-npm install --save-dev typescript ts-node                        # instalação de bibliotecas necessárias para desenvolvimento da aplicação
-npm install --save-dev @types/node @types/express @types/sqlite3 # instalação de bibliotecas de tipos, auxiliares durante o desenvolvimento
-npx tsc --init                                                   # criação do arquivo de configuração do typescript
+# criação do arquivo de configuração do projeto
+npm init -y
+ 
+# instalação de bibliotecas necessárias para execução da aplicação
+npm install express sqlite sqlite3
+ 
+# instalação de bibliotecas necessárias para desenvolvimento da aplicação
+npm install --save-dev typescript ts-node
+ 
+# instalação de bibliotecas de tipos, auxiliares durante o desenvolvimento
+npm install --save-dev @types/node @types/express @types/sqlite3
+ 
+# criação do arquivo de configuração do typescript
+npx tsc --init
 ```
  
 #### 2.2.1 - O que aconteceu quando é executado o comando `npm init -y`
