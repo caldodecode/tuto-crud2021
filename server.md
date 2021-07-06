@@ -1,15 +1,18 @@
-conhecimentos necessário
-==========================
+
+ 
+1 - Servidor
+============
+
+
+1.1 - conhecimentos necessários
+------------------------
 
 - lógica de programação
 - uso do terminal
 - json
 - javascript
 - protocolo http
- 
-1 - Servidor
-============
- 
+
 2 - Preparação do Ambiente de Desenvolvimento
 ---------------------------------------------
  
