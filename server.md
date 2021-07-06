@@ -27,9 +27,9 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
 Crie manualmente a seguinte estrutura de arquivos:
  
 ```bash
-tutorial/
-└─ server/
-   └─ src/
+tutorial/                   # pasta raiz geral de nosso progeto
+└─ server/                  # pasta da aplicação servidora (API) de nosso CRUD -> arraste essa para dentro do vscode
+   └─ src/                  # pasta onde colocaremos nosso código fonte
       ├─ main.ts            # onde faremos todos os endpoints de nossa aplicação
       └─ create-database.ts # onde sera escrito as regras de criação do banco sqlite
 ```
