@@ -4,7 +4,7 @@
 ============
 
 
-1.1 - conhecimentos necessários
+1.1 - Conhecimentos Necessários
 ------------------------
 
 - lógica de programação
