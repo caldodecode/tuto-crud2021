@@ -353,7 +353,9 @@ export async function initDatabase() {
 ```
 
 **`src/main.ts`**
-> :warning: **ATENÇÃO** alteramos o main.ts somente para que seja possível executar testes, nos próximos passos iremos remover essas alterações.
+
+> :warning: **ATENÇÃO** alteramos o arquivo `main.ts` somente para que seja possível executar um teste, a fim de verificar se até o momento tudo está em ordem, nos próximos passos iremos remover essas alterações.
+
 ```typescript
 import { initDatabase } from "./database"
 
