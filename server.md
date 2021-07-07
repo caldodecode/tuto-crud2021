@@ -1,4 +1,4 @@
-# 1 - Servidor
+# 1 - Servidor/API
 
 ...
 
@@ -27,7 +27,7 @@ tutorial/                   # pasta raiz geral de nosso projeto
 └─ server/                  # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
    └─ src/                  # pasta onde colocaremos nosso código fonte
       ├─ main.ts            # onde faremos todos os endpoints de nossa aplicação
-      └─ create-database.ts # onde será escrito as regras de criação do banco sqlite
+      └─ database.ts        # onde serão escritas as regras de criação de tabelas e manipulação de dados no banco sqlite
 ```
  
 ## 2.2 - Instalação de dependências
@@ -95,7 +95,7 @@ tutorial/                   # criado pelo desenvolvedor
    ├─ dist/                 # será criado futuramente ao executar `npm run build`
    ├─ src/                  # criado pelo desenvolvedor
    │  ├─ main.ts            # criado pelo desenvolvedor
-   │  └─ create-database.ts # criado pelo desenvolvedor
+   │  └─ database.ts        # criado pelo desenvolvedor
    ├─ package.json          # criado ao executar `npm init`
    ├─ package-lock.json     # criado ao executar `npm install ...`
    └─ tsconfig.json         # criado ao executar `npx tsc --init`
@@ -210,6 +210,14 @@ npm run build
 npm run dev
 ```
  
-# 3 -
+# 3 - Acesso e manipulação do banco de dados
 
+...
 
+# 4 - Criação de _endpoints_
+
+...
+
+# 5 - Testar a API
+
+...
