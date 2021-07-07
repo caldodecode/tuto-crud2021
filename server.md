@@ -55,11 +55,11 @@ npm install --save-dev @types/node @types/express @types/sqlite3
 npx tsc --init
 ```
  
-#### 2.2.1 - O que aconteceu quando é executado o comando `npm init -y`
+#### 2.2.1 - O que `npm init -y` faz?
  
 Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensiveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
  
-#### 2.2.2 - O que aconteceu quando é executado o comando `npm install express sqlite sqlite3`
+#### 2.2.2 - O que `npm install express sqlite sqlite3` faz?
  
 Ao executar esse comando o `npm` baixa três bibliotecas `express`, `sqlite` e `sqlite3`, bem como as interdependências destas bibliotecas:
 - O `npm` baixa e salva todas estas bibliotecas em uma pasta chamada `node_modules`.
@@ -73,18 +73,18 @@ Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 - *sqlite3*: Esta biblioteca permite a manipulação de bancos de dados sqlite. [maiores informaçõe no site oficial](https://github.com/mapbox/node-sqlite3).
 - *sqlite*: Esta biblioteca permite a utilização da biblioteca `sqlite3` de maneira assíncrona. [maiores informaçõe no site oficial](https://github.com/kriasoft/node-sqlite#readme).
  
-#### 2.2.3 - O que aconteceu quando é executado o comando `npm install --save-dev typescript ts-node`
+#### 2.2.3 - O que `npm install --save-dev typescript ts-node` faz?
  
 Assim como o comando anterior, este também instala bibliotecas, nesta caso ele instala a biblioteca `typescript` e `ts-node`, estas bibliotecas são necessárias somente no momento de desenvolvimento da aplicação por isso adicionamos o parâmetro `--save-dev` ao comando, a única coisa que este comando difere do anterior é que ao invés de criar as referências dentro da chave `dependencies` do arquivo `package.json`, esta cria dentro da chave `devDependencies`, marcando-as assim como dependências necessárias somente para o desenvolvimento da aplicação.
 Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 - *typescript*: TypeScript é um superconjunto de JavaScript desenvolvido pela Microsoft que adiciona tipagem e alguns outros recursos a linguagem. [maiores informaçõe no site oficial](https://www.typescriptlang.org/)
 - *ts-node*: Permite que o typescript seja executado sem a necessidade de criar os arquivos de distribuição da aplicação, facilitando assim o desenvolvimento da aplicação. [maiores informaçõe no site oficial](https://github.com/TypeStrong/ts-node#readme)
  
-#### 2.2.4 - O que aconteceu quando é executado o comando `npm install --save-dev @types/node @types/express @types/sqlite3`
+#### 2.2.4 - O que `npm install --save-dev @types/node @types/express @types/sqlite3` faz?
  
 Assim como o comando anterior, instala bibliotecas como bibliotecas necessárias para o desenvolvimento da aplicação, porém estas bibliotecas são utilizadas para ajudar o `vscode` com o _auto complete_, facilitando assim a escrita do código, de fato estas bibliotecas não são essenciais para o desenvolvimento mas ela ajuda o `typescript` e consequentemente o `vscode` a entender os tipos e dependências das bibliotecas `express`, `sqlite3` e do próprio `NodeJs`.
  
-#### 2.2.5 - O que aconteceu quando é executado o comando `npx tsc --init`
+#### 2.2.5 - O que `npx tsc --init` faz?
  
 Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo é importante para informar como os arquivos `javascript` serão criados, neste arquivo temos informações como, para qual versão `javascript` o `typescript` deve compilar, em qual pasta esses arquivos devem ser gerados, dentre outras informações pertinentes.
  
