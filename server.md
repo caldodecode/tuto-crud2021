@@ -192,7 +192,7 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
 }
 ```
  
-## 2.6 - Testando/executando o projeto
+## 2.6 - Testando/Executando o ambiente
 
 ...
 
