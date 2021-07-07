@@ -23,7 +23,7 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
 Crie manualmente a seguinte estrutura de arquivos:
  
 ```bash
-:open_file_folder:tutorial/             # pasta raiz geral de nosso projeto
+:open_file_folder: tutorial/             # pasta raiz geral de nosso projeto
 └─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
    └─ src/            # pasta onde colocaremos nosso código fonte
       ├─ main.ts      # onde faremos todos os endpoints de nossa aplicação
