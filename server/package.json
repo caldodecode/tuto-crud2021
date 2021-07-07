@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "dist/main.js",
     "scripts": {
-        "preinstall": "mkdir src",
+        "preinstall": "mkdir src; echo '' >> src/main.ts",
         "dev": "ts-node-script src/main.ts",
         "build": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
