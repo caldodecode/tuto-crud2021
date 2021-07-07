@@ -256,7 +256,7 @@ export async function initDatabase() {
     class Pessoa {
         // define método estático que lista todas as pessoas contidas na tabela pessoas do banco de dados
         static async listar() {
-            // aguarda execução da busca de todos os dados contidos na tabela pessoa e assim que retornado as armazena 
+            // aguarda execução da busca de todos os dados contidos na tabela pessoa e assim que retornar as armazena 
             // em uma constante chamada `result`
             const result = await db.all(`SELECT * FROM pessoa`)
             // retorna os dados da constante `result`
@@ -268,7 +268,7 @@ export async function initDatabase() {
         // pessoa que tenha este `id`
         static async listarUm(id: number) {
             // aguarda execução da busca de dados de uma pessoa específica filtrada pelo campo `id`, contida na tabela 
-            // pessoa e assim que retornado as armazena em uma constante chamada `result`
+            // pessoa e assim que retornar as armazena em uma constante chamada `result`
             const result = await db.all(`SELECT * FROM pessoa WHERE id=:id`, { ":id": id })
             // retorna os dados da constante `result`
             return result
@@ -346,15 +346,14 @@ export async function initDatabase() {
         }
     }
 
-    // retono da função `initDatabase`, retorna um objeto contendo a classe Pessoa (que contêm os métodos para 
+    // retorno da função `initDatabase`, retorna um objeto contendo a classe Pessoa (que contêm os métodos para 
     // manipulação do banco de dados)
     return { Pessoa }
 }
 ```
 
-> :warning: **ATENÇÃO** alteramos o main.ts somente para que seja possível executar testes, nos próximos passos iremos remover essas alterações.
-
 **`src/main.ts`**
+> :warning: **ATENÇÃO** alteramos o main.ts somente para que seja possível executar testes, nos próximos passos iremos remover essas alterações.
 ```typescript
 import { initDatabase } from "./database"
 
