@@ -23,11 +23,11 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
 Crie manualmente a seguinte estrutura de arquivos:
  
 ```bash
-tutorial/                   # pasta raiz geral de nosso progeto
-└─ server/                  # pasta da aplicação servidora (API) de nosso CRUD -> arraste essa para dentro do vscode
+tutorial/                   # pasta raiz geral de nosso projeto
+└─ server/                  # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
    └─ src/                  # pasta onde colocaremos nosso código fonte
       ├─ main.ts            # onde faremos todos os endpoints de nossa aplicação
-      └─ create-database.ts # onde sera escrito as regras de criação do banco sqlite
+      └─ create-database.ts # onde será escrito as regras de criação do banco sqlite
 ```
  
 ## 2.2 - Instalação de dependências
@@ -53,20 +53,20 @@ npx tsc --init
  
 ### 2.2.1 - O que o comando `npm init -y` faz?
  
-Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensiveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
+Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensíveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
  
 ### 2.2.2 - O que o comando `npm install express sqlite sqlite3` faz?
- 
+
 Ao executar esse comando, o `npm` baixa três bibliotecas `express`, `sqlite` e `sqlite3`, bem como as interdependências destas bibliotecas:
 - O `npm` baixa e salva todas estas bibliotecas em uma pasta chamada `node_modules`.
-- Cada uma das bibliotecas pode depender de outras bibliotecas portanto, o `npm` se encarregará em baixar também estas bibliotecas e, assim como as demais, irá salva-las na pasta `node_modules`.
+- Cada uma das bibliotecas pode depender de outras bibliotecas, portanto, o `npm` se encarregará em baixar também estas bibliotecas e, assim como as demais, irá salvá-las na pasta `node_modules`.
 - Para controle do projeto após baixar as bibliotecas, o `npm` as lista-ra no arquivo `package.json` dentro da chave `dependencies`.
 - As interdependências destas bibliotecas são listadas no arquivo `package-lock.json`, para controle interno do `npm`.
- 
+
 Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
- 
+
 - *express*: Express.js é um framework para Node.js que fornece recursos mínimos para construção de servidores web. [maiores informações no site oficial](https://expressjs.com/).
-- *sqlite3*: Esta biblioteca permite a manipulação de bancos de dados sqlite. [maiores informaçõe no site oficial](https://github.com/mapbox/node-sqlite3).
+- *sqlite3*: Esta biblioteca permite a manipulação de bancos de dados sqlite. [maiores informações no site oficial](https://github.com/mapbox/node-sqlite3).
 - *sqlite*: Esta biblioteca permite a utilização da biblioteca `sqlite3` de maneira assíncrona. [maiores informaçõe no site oficial](https://github.com/kriasoft/node-sqlite#readme).
  
 ### 2.2.3 - O que o comando `npm install --save-dev typescript ts-node` faz?
@@ -84,7 +84,7 @@ Assim como o comando anterior, instala bibliotecas como bibliotecas necessárias
  
 Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo é importante para informar como os arquivos `javascript` serão criados, neste arquivo temos informações como, para qual versão `javascript` o `typescript` deve compilar, em qual pasta esses arquivos devem ser gerados, dentre outras informações pertinentes.
  
-> É importante pontuar que neste momento utilizamos o comando com o prefixo `npx`,  este prefixo é utilizado quando se faz necessário executar um binário de uma  biblioteca instalada localmente ou seja, que esta dentro da pasta `node_modules`, neste caso executamos o comando `tsc`, sigla para typescript compiler, com o parâmetro `--init`
+> É importante pontuar que neste momento utilizamos o comando com o prefixo `npx`,  este prefixo é utilizado quando se faz necessário executar um binário de uma  biblioteca instalada localmente ou seja, que está dentro da pasta `node_modules`, neste caso executamos o comando `tsc`, sigla para typescript compiler, com o parâmetro `--init`
  
 ## 2.3 - Estrutura final de arquivos
  
@@ -132,9 +132,9 @@ Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` pa
 }
 ```
  
-é necessário alterar a linha `"main" : "index.js"` para `"main" : "dist/main.js"`, pois quando configuramos o arquivo `tsconfig.json` iremos informar que os arquivos `javascript` serão gerados em uma pasta de nome `dist`, o porquê deste nome será explicado no passo em que falaremos sobre a configuração do `typescript`.
+É necessário alterar a linha `"main" : "index.js"` para `"main" : "dist/main.js"`, pois quando configuramos o arquivo `tsconfig.json` iremos informar que os arquivos `javascript` serão gerados em uma pasta de nome `dist`, o porquê deste nome será explicado no passo em que falaremos sobre a configuração do `typescript`.
  
-Além de alterar o caminho do arquivo main, também precisamos adicionar dois `scripts`, um que usaremos para criação dos arquivos final da aplicação e outro que usaremos durante os testes, então entre a linha `"scripts": {` e `"test": "..."` iremos adicionar `"dev": "ts-node-script src/main.ts",`, este script sera utilizado durante o desenvolvimento da aplicação e para criação da aplicação, logo após esta linha adicionaremos `"build": "tsc",`.
+Além de alterar o caminho do arquivo main, também precisamos adicionar dois `scripts`, um que usaremos para criação dos arquivos final da aplicação e outro que usaremos durante os testes, então entre a linha `"scripts": {` e `"test": "..."` iremos adicionar `"dev": "ts-node-script src/main.ts",`, este script será utilizado durante o desenvolvimento da aplicação e para criação da aplicação, logo após esta linha adicionaremos `"build": "tsc",`.
  
 pelo fato de termos adicionado esses dois comandos no `package.json`, agora é possível executar chamá-los da seguinte maneira pela linha de comando `npm run dev` e `npm run debug`, o primeiro comando usaremos para os testes e o segundo para a criação da aplicação final.
  
@@ -174,7 +174,7 @@ o resultado final do nossa arquivo `package.json` deve ser a seguinte:
  
 O arquivo `tsconfig.json` que foi gerado no momento da execução do comando `npx tsc --init` tem todas as possível chaves de configurações, por isso é um arquivo relativamente grande, porém para este projeto iremos nos focar em apenas dois atributos definidos nele, o `"target"`, que define a versão do `javascript` para a qual iremos compilar/transpilar o `typescript` e. o `"outDir"`, que é a pasta onde os arquivos `javascript` serão salvos.
  
-Para este projeto a linha `"target": "es5",` deve ser alterada para `"target": "ES2021",` e a linha `// "outDir": "./",` deve ser descomentada e alterada para `"outDir": "./dist",`, o nome da pasta `dist` é uma convenção e abreviação do termo em inglês `distributable`, que significa `distribuível`, é nessa pasta que ficarão os arquivos que serão distribuidos para os usuários final após o fechamento de uma versão da aplicação.
+Para este projeto a linha `"target": "es5",` deve ser alterada para `"target": "ES2021",` e a linha `// "outDir": "./",` deve ser descomentada e alterada para `"outDir": "./dist",`, o nome da pasta `dist` é uma convenção e abreviação do termo em inglês `distributable`, que significa `distribuível`, é nessa pasta que ficarão os arquivos que serão distribuídos para os usuários final após o fechamento de uma versão da aplicação.
  
 De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
  
@@ -202,7 +202,7 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
 npm run build
 ```
 
-> após este comando ser executado uma pasta chamada `dist` deve ser criada com os arquivos `javasript` de uma versão de distribuição, para executar o projeto nete caso é possível utilizar diretamente o `NodeJs`, com o seguinte comando `node dist\main.js`.
+> após este comando ser executado uma pasta chamada `dist` deve ser criada com os arquivos `javasript` de uma versão de distribuição, para executar o projeto neste caso é possível utilizar diretamente o `NodeJs`, com o seguinte comando `node dist\main.js`.
  
 ### 2.6.2 - Testando a aplicação 
 
