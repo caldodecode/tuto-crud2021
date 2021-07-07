@@ -221,13 +221,13 @@ import sqlite3 from "sqlite3"
 import { open } from "sqlite"
 
 
-// cria e exporta (como item da biblioteca) a função assíncrona `initdatabase`, responsável por conectar-se, criar a 
-// tabelas se necessário e manipular dados no banco de dados, esta função retorna um objeto contendo abstrações para 
-// cada uma das ações a serem executadas no banco de dados
+// cria e exporta (como item da biblioteca) a função assíncrona `initdatabase`, responsável por conectar-se, criar 
+// a tabelas se necessário e manipular dados no banco de dados, esta função retorna um objeto contendo abstrações 
+// para cada uma das ações a serem executadas no banco de dados
 export async function initDatabase() {
-    // aguarda conectar-se no arquivo `database.db` (cria o mesmo caso necessário), utilizando o `sqlite3` como driver, 
-    // e assim que terminar a execução, armazena numa constante chamada `db` um objeto que permite a manipulação do 
-    // banco de dados
+    // aguarda conectar-se no arquivo `database.db` (cria o mesmo caso necessário), utilizando o `sqlite3` como 
+    // driver, e assim que terminar a execução, armazena numa constante chamada `db` um objeto que permite a 
+    // manipulação do banco de dados
     const db = await open({
         filename: "database.db",
         driver: sqlite3.Database
@@ -256,8 +256,8 @@ export async function initDatabase() {
     class Pessoa {
         // define método estático que lista todas as pessoas contidas na tabela pessoas do banco de dados
         static async listar() {
-            // aguarda execução da busca de todos os dados contidos na tabela pessoa e assim que retornar as armazena 
-            // em uma constante chamada `result`
+            // aguarda execução da busca de todos os dados contidos na tabela pessoa e assim que retornar as 
+            // armazena em uma constante chamada `result`
             const result = await db.all(`SELECT * FROM pessoa`)
             // retorna os dados da constante `result`
             return result
@@ -267,16 +267,16 @@ export async function initDatabase() {
         // recebe um parâmetro chamado `id` do tipo `number` que será utilizado para selecionar somente os dados da 
         // pessoa que tenha este `id`
         static async listarUm(id: number) {
-            // aguarda execução da busca de dados de uma pessoa específica filtrada pelo campo `id`, contida na tabela 
-            // pessoa e assim que retornar as armazena em uma constante chamada `result`
+            // aguarda execução da busca de dados de uma pessoa específica filtrada pelo campo `id`, contida na 
+            // tabela pessoa e assim que retornar as armazena em uma constante chamada `result`
             const result = await db.all(`SELECT * FROM pessoa WHERE id=:id`, { ":id": id })
             // retorna os dados da constante `result`
             return result
         }
 
-        // define método estático que adiciona uma pessoa no banco de dados, esta função recebe um parâmetro chamado 
-        // `dados` do tipo `TipoDadosDePessoa`, estes dados serão utilizados para inserir uma nova pessoa no banco de 
-        // dados
+        // define método estático que adiciona uma pessoa no banco de dados, esta função recebe um parâmetro 
+        // chamado `dados` do tipo `TipoDadosDePessoa`, estes dados serão utilizados para inserir uma nova pessoa 
+        // no banco de dados
         static async adicionar(dados: TipoDadosDePessoa) {
             // aguarda a execução da inserção dos dados de uma nova pessoa no banco de dados e assim que inserido, 
             // armazena os dados desta execução em uma constante chamada `result`
@@ -300,15 +300,15 @@ export async function initDatabase() {
                     ":telefone": dados.telefone
                 }
             )
-            // retorna um objeto contendo uma chave chamada `id` que é recebida pelo valor `lastID` contido na constante 
-            // `result`, definida no passo anterior
+            // retorna um objeto contendo uma chave chamada `id` que é recebida pelo valor `lastID` contido na 
+            // constante `result`, definida no passo anterior
             return { id: result.lastID }
         }
 
         // define método estático que altera dados de uma pessoa no banco de dados, esta função recebe um parâmetro 
-        // chamado `id` do tipo `number` que será utilizado para selecionar para alteração somente os dados da pessoa 
-        // que tenha este `id`, além deste parâmetro essa função também recebe um parâmetro chamado `dados` do tipo 
-        // `TipoDadosDePessoa`, estes dados serão utilizados para alterar os dados de pessoa
+        // chamado `id` do tipo `number` que será utilizado para selecionar para alteração somente os dados da 
+        // pessoa que tenha este `id`, além deste parâmetro essa função também recebe um parâmetro chamado `dados` 
+        // do tipo `TipoDadosDePessoa`, estes dados serão utilizados para alterar os dados de pessoa
         static async alterar(id: number, dados: TipoDadosDePessoa) {
             // aguarda a execução da alteração dos dados da pessoa com o `id` determinado
             const result = await db.run(
@@ -329,19 +329,19 @@ export async function initDatabase() {
                     ":telefone": dados.telefone
                 }
             )
-            // retorna um objeto contendo uma chave chamada `linhasAfetadas` que é recebida pelo `lastID` contido na 
-            // constante `changes`, definida no passo anterior
+            // retorna um objeto contendo uma chave chamada `linhasAfetadas` que é recebida pelo `lastID` contido 
+            // na constante `changes`, definida no passo anterior
             return { linhasAfetadas: result.changes }
         }
 
         // define método estático que exclui dados de uma pessoa no banco de dados, esta função recebe um parâmetro 
-        // chamado `id` do tipo `number` que será utilizado para selecionar para exclusão somente os dados da pessoa que 
-        // tenha este `id`
+        // chamado `id` do tipo `number` que será utilizado para selecionar para exclusão somente os dados da 
+        // pessoa que tenha este `id`
         static async excluir(id: number) {
             // aguarda a execução da exclusão dos dados da pessoa com `id` determinado
             const result = await db.run(`DELETE FROM pessoa WHERE id=:id`, { ":id": id })
-            // retorna um objeto contendo uma chave chamada `linhasAfetadas` que é recebida pelo `lastID` contido na 
-            // constante `changes`, definida no passo anterior
+            // retorna um objeto contendo uma chave chamada `linhasAfetadas` que é recebida pelo `lastID` contido 
+            // na constante `changes`, definida no passo anterior
             return { linhasAfetadas: result.changes }
         }
     }
