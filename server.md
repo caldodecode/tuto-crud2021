@@ -210,7 +210,7 @@ npm run build
 npm run dev
 ```
  
-# 3 - Acesso e manipulação do banco de dados
+# :construction_worker: 3 - Acesso e manipulação do banco de dados
 
 **`src/database.ts`**
 ```typescript
@@ -430,7 +430,7 @@ Sr. Code de Cana: [
 ]
 ```
 
-# 4 - Criação de _endpoints_
+# :construction_worker: 4 - Criação de _endpoints_
 
 ...
 
@@ -441,6 +441,6 @@ _A communication endpoint is a type of communication network node. It is an inte
 https://en.wikipedia.org/wiki/Communication_endpoint
 
 
-# 5 - Testar a API
+# :construction_worker: 5 - Testar a API
 
 ...
