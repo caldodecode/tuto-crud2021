@@ -89,16 +89,16 @@ Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo 
 ## 2.3 - Estrutura final de arquivos
  
 ```bash
-tutorial/                   # criado pelo desenvolvedor
-└─ server/                  # criado pelo desenvolvedor
-   ├─ node_modules/         # criado ao executar `npm install ...`
-   ├─ dist/                 # será criado futuramente ao executar `npm run build`
-   ├─ src/                  # criado pelo desenvolvedor
-   │  ├─ main.ts            # criado pelo desenvolvedor
-   │  └─ database.ts        # criado pelo desenvolvedor
-   ├─ package.json          # criado ao executar `npm init`
-   ├─ package-lock.json     # criado ao executar `npm install ...`
-   └─ tsconfig.json         # criado ao executar `npx tsc --init`
+tutorial/                # criado pelo desenvolvedor
+└─ server/               # criado pelo desenvolvedor
+   ├─ node_modules/      # criado ao executar `npm install ...`
+   ├─ dist/              # será criado futuramente ao executar `npm run build`
+   ├─ src/               # criado pelo desenvolvedor
+   │  ├─ main.ts         # criado pelo desenvolvedor
+   │  └─ database.ts     # criado pelo desenvolvedor
+   ├─ package.json       # criado ao executar `npm init`
+   ├─ package-lock.json  # criado ao executar `npm install ...`
+   └─ tsconfig.json      # criado ao executar `npx tsc --init`
 ```
  
 ## 2.4 - Configuração do projeto `package.json`
