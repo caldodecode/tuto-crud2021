@@ -1,14 +1,24 @@
-# 1 - Servidor/API
+# 1 - Servidor/API Rest API
 
 ...
 
 ## 1.1 - Conhecimentos Necessários
 
-- lógica de programação
-- uso do terminal
-- json
-- javascript
-- protocolo http
+- Lógica de Programação
+    -
+- O que são APIs 
+    - ["Dicionário do Programador"](https://www.youtube.com/watch?v=vGuqKIRWosk)
+- Json 
+    - [Dicionário do Programador"](https://www.youtube.com/watch?v=P81dE-tkaaA)
+    - [DevMedia](https://www.devmedia.com.br/json-tutorial/25275)
+- POO - Programação Orientada a Objetos 
+    -  [Dicionário do Programador](https://www.youtube.com/watch?v=QY0Kdg83orY)
+- Javascript/ECMAScript
+    - ["MDN Web Docs"](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- URL
+    - ["Caldo de Code"](https://www.youtube.com/watch?v=YccUWE6dito)
+- HTTP
+    - ["Dicionário do Programador"](https://www.youtube.com/watch?v=hwttZtWkXTk)
 
 # 2 - Preparação do Ambiente de Desenvolvimento
  
@@ -23,7 +33,7 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
 Crie manualmente a seguinte estrutura de arquivos:
  
 ```bash
-:open_file_folder: tutorial/             # pasta raiz geral de nosso projeto
+tutorial/             # pasta raiz geral de nosso projeto
 └─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
    └─ src/            # pasta onde colocaremos nosso código fonte
       ├─ main.ts      # onde faremos todos os endpoints de nossa aplicação
@@ -432,13 +442,7 @@ Sr. Code de Cana: [
 
 # :construction_worker: 4 - Criação de _endpoints_
 
-...
-
-Um _endpoint_ é um tipo de nó de rede de comunicação. É uma interface exposta por uma parte em comunicação ou por um canal de comunicação. Um exemplo do último tipo de ponto de extremidade de comunicação é um tópico publicar-assinar [1] ou um grupo em sistemas de comunicação de grupo.
-
-_A communication endpoint is a type of communication network node. It is an interface exposed by a communicating party or by a communication channel. An example of the latter type of a communication endpoint is a publish-subscribe topic [1] or a group in group communication systems._
-
-https://en.wikipedia.org/wiki/Communication_endpoint
+Endpoints nada mais são que os caminhos que a nossa aplicação expõe para os usuários, estes caminhos normalmente são acessiveis pelo protocolo HTTP,
 
 
 # :construction_worker: 5 - Testar a API
