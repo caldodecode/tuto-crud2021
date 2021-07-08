@@ -146,7 +146,7 @@ Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` pa
  
 Além de alterar o caminho do arquivo main, também precisamos adicionar dois `scripts`, um que usaremos para criação dos arquivos final da aplicação e outro que usaremos durante os testes, então entre a linha `"scripts": {` e `"test": "..."` iremos adicionar `"dev": "ts-node-script src/main.ts",`, este script será utilizado durante o desenvolvimento da aplicação e para criação da aplicação, logo após esta linha adicionaremos `"build": "tsc",`.
  
-pelo fato de termos adicionado esses dois comandos no `package.json`, agora é possível executar chamá-los da seguinte maneira pela linha de comando `npm run dev` e `npm run debug`, o primeiro comando usaremos para os testes e o segundo para a criação da aplicação final.
+pelo fato de termos adicionado esses dois comandos no `package.json`, agora é possível executar chamá-los da seguinte maneira pela linha de comando `npm run dev` e `npm run build`, o primeiro comando usaremos para os testes e o segundo para a criação da aplicação final.
  
 o resultado final do nossa arquivo `package.json` deve ser a seguinte:
  
@@ -191,7 +191,7 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
 ```jsonc
 {
  "compilerOptions": {
-   "target": "ES2021",                             // linha alterada
+   "target": "ES2020",                             // linha alterada
    "module": "commonjs",
    "outDir": "./dis",                              // linha alterada
    "strict": true,
