@@ -1,6 +1,7 @@
+// 
 import { initDatabase } from "./database"
 
-void async function init() {
+void async function () {
     const db = await initDatabase()
 
     await db.Pessoa.adicionar({

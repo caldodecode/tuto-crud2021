@@ -375,7 +375,7 @@ export async function initDatabase() {
 ```typescript
 import { initDatabase } from "./database"
 
-void async function init() {
+void async function () {
     const db = await initDatabase()
 
     await db.Pessoa.adicionar({
