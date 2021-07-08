@@ -142,7 +142,7 @@ Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` pa
 }
 ```
  
-É necessário alterar a linha `"main" : "index.js"` para `"main" : "dist/main.js"`, pois quando configuramos o arquivo `tsconfig.json` iremos informar que os arquivos `javascript` serão gerados em uma pasta de nome `dist`, o porquê deste nome será explicado no passo em que falaremos sobre a configuração do `typescript`.
+É necessário alterar a linha `"main" : "index.js"` para `"main" : "dist/main.js"`, pois quando configurarmos o arquivo `tsconfig.json` iremos informar que os arquivos `javascript` serão gerados em uma pasta de nome `dist`, o porquê deste nome será explicado no passo em que falaremos sobre a configuração do `typescript`.
  
 Além de alterar o caminho do arquivo main, também precisamos adicionar dois `scripts`, um que usaremos para criação dos arquivos final da aplicação e outro que usaremos durante os testes, então entre a linha `"scripts": {` e `"test": "..."` iremos adicionar `"dev": "ts-node-script src/main.ts",`, este script será utilizado durante o desenvolvimento da aplicação e para criação da aplicação, logo após esta linha adicionaremos `"build": "tsc",`.
  
