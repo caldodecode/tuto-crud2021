@@ -204,21 +204,28 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
  
 ## 2.6 - Testando/Executando o ambiente
 
-...
+Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
 
 ### 2.6.1 - Criando uma versão de distribuição 
+
+Execute o comando abaixo para compilar os arquivos `TypeScript` para `Javascript`, se tudo ocorrer bem uma pasta chamada `dist` deve ser criada com os arquivos `javascript` de uma versão de distribuição.
 
 ```bash
 npm run build
 ```
 
-> após este comando ser executado uma pasta chamada `dist` deve ser criada com os arquivos `javasript` de uma versão de distribuição, para executar o projeto neste caso é possível utilizar diretamente o `NodeJs`, com o seguinte comando `node dist\main.js`.
- 
+Para executar a versão de distribuição que você acabou de criar execute o seguinte comando em seu terminal:
+
+```bash
+node dist\main.js
+```
+
 ### 2.6.2 - Testando a aplicação 
 
 ```bash
 npm run dev
 ```
+
  
 # :construction_worker: 3 - Acesso e manipulação do banco de dados
 
@@ -229,7 +236,6 @@ import sqlite3 from "sqlite3"
 
 // importa a biblioteca `sqlite`, que  servirá para fazermos requisições assíncronas no banco de dados sqlite
 import { open } from "sqlite"
-
 
 // cria e exporta (como item da biblioteca) a função assíncrona `initdatabase`, responsável por conectar-se, criar 
 // a tabelas se necessário e manipular dados no banco de dados, esta função retorna um objeto contendo abstrações 
