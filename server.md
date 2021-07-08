@@ -182,7 +182,7 @@ o resultado final do nossa arquivo `package.json` deve ser a seguinte:
  
 ## 2.5 - Configuração do transpilador/typescript `tsconfig.json`
  
-O arquivo `tsconfig.json` que foi gerado no momento da execução do comando `npx tsc --init` tem todas as possível chaves de configurações, por isso é um arquivo relativamente grande, porém para este projeto iremos nos focar em apenas dois atributos definidos nele, o `"target"`, que define a versão do `javascript` para a qual iremos compilar/transpilar o `typescript` e. o `"outDir"`, que é a pasta onde os arquivos `javascript` serão salvos.
+O arquivo `tsconfig.json` que foi gerado no momento da execução do comando `npx tsc --init` tem todas as possíveis chaves de configurações, por isso é um arquivo relativamente grande, porém para este projeto iremos nos focar em apenas dois atributos definidos nele, o `"target"`, que define a versão do `javascript` para a qual iremos compilar/transpilar o `typescript` e. o `"outDir"`, que é a pasta onde os arquivos `javascript` serão salvos.
  
 Para este projeto a linha `"target": "es5",` deve ser alterada para `"target": "ES2021",` e a linha `// "outDir": "./",` deve ser descomentada e alterada para `"outDir": "./dist",`, o nome da pasta `dist` é uma convenção e abreviação do termo em inglês `distributable`, que significa `distribuível`, é nessa pasta que ficarão os arquivos que serão distribuídos para os usuários final após o fechamento de uma versão da aplicação.
  
