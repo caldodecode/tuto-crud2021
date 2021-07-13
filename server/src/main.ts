@@ -25,7 +25,7 @@ void async function () {
     })
 
     app.post("/pessoa", async (request, response) => {
-        try {
+        try {   
             const result = await db.Pessoa.adicionar(request.body)
             response.json(result)
         } catch (e) {

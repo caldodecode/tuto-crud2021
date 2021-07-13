@@ -32,7 +32,7 @@ GET http://127.0.0.1:8080/pessoa HTTP/1.1
 ### BUSCAR DADOS DE UMA PESSOA POR ID
 ###
 
-GET http://127.0.0.1:8080/pessoa/4 HTTP/1.1
+GET http://127.0.0.1:8080/pessoa/1 HTTP/1.1
 
 ###
 ### ADICIONAR NOVA PESSOA
@@ -52,7 +52,7 @@ content-type: application/json
 ### ALTERAR UMA PESSOA PELO ID
 ###
 
-PUT http://127.0.01:8080/pessoa/3 HTTP/1.1
+PUT http://127.0.0.1:8080/pessoa/1 HTTP/1.1
 content-type: application/json
 
 {
@@ -66,4 +66,4 @@ content-type: application/json
 ### EXCLUIR PESSOA POR ID
 ###
 
-DELETE http://127.0.0.1:8080/pessoa/5 HTTP/1.1
+DELETE http://127.0.0.1:8080/pessoa/1 HTTP/1.1

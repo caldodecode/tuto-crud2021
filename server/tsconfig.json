@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                             // linha alterada
+    "module": "commonjs",
+    "outDir": "./dis",                              // linha alterada
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+ }

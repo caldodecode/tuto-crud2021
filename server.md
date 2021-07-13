@@ -34,10 +34,11 @@ Crie manualmente a seguinte estrutura de arquivos:
  
 ```bash
 tutorial/             # pasta raiz geral de nosso projeto
-└─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
-   └─ src/            # pasta onde colocaremos nosso código fonte
-      ├─ main.ts      # onde faremos todos os endpoints de nossa aplicação
-      └─ database.ts  # onde serão escritas as regras de criação de tabelas e manipulação de dados no banco sqlite
+├─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
+│  └─ src/            # pasta onde colocaremos nosso código fonte
+│     ├─ main.ts      # onde faremos todos os endpoints de nossa aplicação
+│     └─ database.ts  # onde serão escritas as regras de criação de tabelas e manipulação de dados no banco sqlite
+└─ test-pessoa.http   # onde escreveremos testes dos endpoints (necessário para testes antes do desenvolvimento da interface)
 ```
  
 ## 2.2 - Instalação de dependências
@@ -102,12 +103,13 @@ Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo 
 tutorial/                # criado pelo desenvolvedor
 └─ server/               # criado pelo desenvolvedor
    ├─ node_modules/      # criado ao executar `npm install ...`
-   ├─ dist/              # será criado futuramente ao executar `npm run build`
+   ├─ dist/              # criado futuramente ao executar `npm run build`
    ├─ src/               # criado pelo desenvolvedor
    │  ├─ main.ts         # criado pelo desenvolvedor
    │  └─ database.ts     # criado pelo desenvolvedor
    ├─ package.json       # criado ao executar `npm init`
    ├─ package-lock.json  # criado ao executar `npm install ...`
+   ├─ test-pessoa.http   # criado pelo desenvolvedor
    └─ tsconfig.json      # criado ao executar `npx tsc --init`
 ```
  
@@ -450,7 +452,120 @@ Sr. Code de Cana: [
 
 Endpoints nada mais são que os caminhos que a nossa aplicação expõe para os usuários, estes caminhos normalmente são acessiveis pelo protocolo HTTP,
 
+**`src\main.ts`**
+```typescript
+import { initDatabase } from "./database"
+import express from "express"
+import { json } from "body-parser"
+
+void async function () {
+    const db = await initDatabase()
+    const app = express()
+
+    app.use(json())
+
+    app.get("/pessoa", async (request, response) => {
+        const result = await db.Pessoa.listar()
+        response.json(result)
+    })
+
+    app.get("/pessoa/:id", async (request, response) => {
+        try {
+            const id = parseInt(request.params.id)
+            const result = await db.Pessoa.listarUm(id)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }
+    })
+
+    app.post("/pessoa", async (request, response) => {
+        try {   
+            const result = await db.Pessoa.adicionar(request.body)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }
+    })
+
+    app.put("/pessoa/:id", async (request, response) => { 
+        try {
+            const id = parseInt(request.params.id)
+            const result = await db.Pessoa.alterar(id, request.body)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }    
+    })
+
+    app.delete("/pessoa/:id", async (request, response) => {
+        try {
+            const id = parseInt(request.params.id)
+            const result = await db.Pessoa.excluir(id)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }
+    })
+
+    app.listen(8080, () => console.log("⚡ Servidor HTTP inicado!"))
+}()
+```
 
 # :construction_worker: 5 - Testar a API
 
-...
+Sem um cliente não é possível fazer o teste dos endpoints criado na API, por isso utilizaremos um plugin do `VSCode` chamado `REST Client - humao.rest-client`, por hora utilizaremos este plugin para substituir nossa aplicação cliente.
+
+**`test-pessoa.http`**
+```
+###
+### BUSCAR DADOS DE TODAS AS PESSOAS
+###
+
+GET http://127.0.0.1:8080/pessoa HTTP/1.1
+
+###
+### BUSCAR DADOS DE UMA PESSOA POR ID
+###
+
+GET http://127.0.0.1:8080/pessoa/1 HTTP/1.1
+
+###
+### ADICIONAR NOVA PESSOA
+###
+
+POST http://127.0.0.1:8080/pessoa HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Caldo",
+    "sobrenome": "de Code",
+    "telefone": "47 9XXXX XXXX",
+    "email": "caldo@mail.com"
+}
+
+###
+### ALTERAR UMA PESSOA PELO ID
+###
+
+PUT http://127.0.0.1:8080/pessoa/1 HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Caldo (ALTERADO)",
+    "sobrenome": "de Code",
+    "telefone": "47 9XXXX XXXX",
+    "email": "ALTERADO@mail.com"
+}
+
+###
+### EXCLUIR PESSOA POR ID
+###
+
+DELETE http://127.0.0.1:8080/pessoa/1 HTTP/1.1
+
+```
