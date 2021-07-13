@@ -660,6 +660,8 @@ Com este plugin é possível e executar requisições `HTTP`, para isso é neces
 
 > vale ressaltar que aqui somente para fins didáticos as requisições não utilizarão recursos avançados deste plugin, mas sugiro que pesquise sobre o mesmo pois ele tem uma infinidade de funcionalidades úteis.
 
+Edite o arquivo `tutorial\server\test-pessoa.http` que criamos anteriormente com o seguinte conteúdo:
+
 **`tutorial\server\test-pessoa.http`**
 ```
 ### BUSCAR DADOS DE TODAS AS PESSOAS
@@ -699,3 +701,5 @@ content-type: application/json
 DELETE http://127.0.0.1:8080/pessoa/1 HTTP/1.1
 
 ```
+
+É possível perceber que logo à cima de cada uma das requisições escritas existe a frase `Send Request`, se clicado na mesma o plugin tentará fazer uma requisição, porém o servidor ainda não está em funcionamento, por isso é necessário iniciá-lo, digite no terminal `npm run dev`, assim que a frase de inicialização aparecer no terminal será possível executar os testes, clicando na frase `Send Request` ou selecionando uma das requisição e pressionando o seguinte atalho `CTRL + ALT + R`.
