@@ -472,10 +472,13 @@ Abaixo temos o arquivo contendo todos os `endpoints` de nossa aplicação, nesta
 // importa o método initDatabse do módulo `src/database.ts` criado no item 3 
 import { initDatabase } from "./database"
 
-// importa o a funcão padrão do modulo `express` e a armazena em uma constante chamada `express`, esta função será utilizada para criar um objeto da classe `Express` que nos auxilia-ra a criar nosso servidor `HTTP` e os `endpoints`de nossa aplicação 
+// importa o a funcão padrão do modulo `express` e a armazena em uma constante chamada `express`, esta função será 
+// utilizada para criar um objeto da classe `Express` que nos auxilia-ra a criar nosso servidor `HTTP` e os 
+// `endpoints`de nossa aplicação 
 import express from "express"
 
-// importa a função `json` do módulo `body-parser`, esta função auxilia-rá a o recebimento de informações no formato `json` em nossos `endpoins`
+// importa a função `json` do módulo `body-parser`, esta função auxilia-rá a o recebimento de informações no 
+// formato `json` em nossos `endpoins`
 import { json } from "body-parser"
 
 // cria a função principal de nossa aplicação e a executa imediatamente
@@ -483,27 +486,50 @@ void async function () {
     // aguarda a execução da função initDatabase e armazena seu resultado em uma constante aqui nomeada como `db`
     const db = await initDatabase()
     
-    // executa a função `express` responsável por criar um objeto da classe `Express` e o armazena em uma constante chamada `app`
+    // executa a função `express` responsável por criar um objeto da classe `Express` e o armazena em uma constante 
+    // chamada `app`
     const app = express()
 
-    // executa o método `use` do objeto `Express` criado anteriormente, passando como parâmetro o retorno da execução da função `json` do , módulo `body-parser`, o método `use` é utilizado para que em todo e qualquer `endpoint` seja executado a função recebida como parâmetro (vale ressaltar que a função `json` retorna uma outra função e esta sim é executada em cada acesso de nossos `endpoints`, caso não entenda o conceito de `callbacks` sugiro breve pesquisa na internet ou contato com o Prof. Varela ;D)
+    // executa o método `use` do objeto `Express` criado anteriormente, passando como parâmetro o retorno da 
+    // execução da função `json` do , módulo `body-parser`, o método `use` é utilizado para que em todo e qualquer 
+    // `endpoint` seja executado a função recebida como parâmetro (vale ressaltar que a função `json` retorna uma 
+    // outra função e esta sim é executada em cada acesso de nossos `endpoints`, caso não entenda o conceito de 
+    // `callbacks` sugiro breve pesquisa na internet ou contato com o Prof. Varela ;D)
     app.use(json())
 
-    // executa o método `get` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `get`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `get` é efetuada no caminho `/pessoa`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente 
+    // executa o método `get` do objeto `Express` criado anteriormente, este método cria uma rota que responde 
+    // quando uma requisição `HTTP` é feita utilizando o método de requisição `get`, o primeiro parâmetro deste 
+    // método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do 
+    // tipo `get` é efetuada no caminho `/pessoa`, o segundo parâmetro é um `callback` que recebe dois parâmetros, 
+    // o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este 
+    // servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de 
+    // volta para o cliente 
     app.get("/pessoa", async (request, response) => {
-        // aguarda a execução do método `listar` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`,
+        // aguarda a execução do método `listar` da classe `Pessoa` contida no objeto de retorno do método 
+        // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`,
         const result = await db.Pessoa.listar()
         // converte o valor de `result` para `json` e reponde a requisição
         response.json(result)
     })
 
-    // executa o método `get` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `get`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `get` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
+    // executa o método `get` do objeto `Express` criado anteriormente, este método cria uma rota que responde 
+    // quando uma requisição `HTTP` é feita utilizando o método de requisição `get`, o primeiro parâmetro deste 
+    // método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do 
+    // tipo `get` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois 
+    // parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do 
+    // cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie 
+    // informações de volta para o cliente
     app.get("/pessoa/:id", async (request, response) => {
         // tenta executar o bloco
         try {
-            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado 
+            // `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o 
+            // parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado 
+            // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
-            // aguarda a execução do método `listarUm` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
+            // aguarda a execução do método `listarUm` da classe `Pessoa` contida no objeto de retorno do método 
+            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
+            // passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.listarUm(id)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -511,18 +537,27 @@ void async function () {
         
         // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
         catch (e) {
-            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte 
+            // do servidor
             response.statusCode = 500
             // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }
     })
 
-    // executa o método `post` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `post`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `post` é efetuada no caminho `/pessoa`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
+    // executa o método `post` do objeto `Express` criado anteriormente, este método cria uma rota que responde 
+    // quando uma requisição `HTTP` é feita utilizando o método de requisição `post`, o primeiro parâmetro deste 
+    // método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do 
+    // tipo `post` é efetuada no caminho `/pessoa`, o segundo parâmetro é um `callback` que recebe dois parâmetros, 
+    // o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este 
+    // servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de 
+    // volta para o cliente
     app.post("/pessoa", async (request, response) => {
         // tenta executar o bloco
         try {   
-            // aguarda a execução do método `adicionar` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo `body-parser`
+            // aguarda a execução do método `adicionar` da classe `Pessoa` contida no objeto de retorno do método 
+            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
+            // passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.adicionar(request.body)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -530,20 +565,33 @@ void async function () {
         
         // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
         catch (e) {
-            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte 
+            // do servidor
             response.statusCode = 500
             // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }
     })
 
-    // executa o método `put` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `put`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `put` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
+    // executa o método `put` do objeto `Express` criado anteriormente, este método cria uma rota que responde 
+    // quando uma requisição `HTTP` é feita utilizando o método de requisição `put`, o primeiro parâmetro deste 
+    // método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do 
+    // tipo `put` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois 
+    // parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do 
+    // cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie 
+    // informações de volta para o cliente
     app.put("/pessoa/:id", async (request, response) => { 
         // tenta executar o bloco
         try {
-            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado 
+            // `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o 
+            // parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado 
+            // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
-            // aguarda a execução do método `alterar` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como primeiro parâmetro da função o valor tratado no passo anterior, passa como segundo parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
+            // aguarda a execução do método `alterar` da classe `Pessoa` contida no objeto de retorno do método 
+            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
+            // passa como primeiro parâmetro da função o valor tratado no passo anterior, passa como segundo 
+            // parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.alterar(id, request.body)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -551,21 +599,32 @@ void async function () {
         
         // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
         catch (e) {
-            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte 
+            // do servidor
             response.statusCode = 500
             // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }    
     })
 
-    // executa o método `delete` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `delete`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `delete` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
+    // executa o método `delete` do objeto `Express` criado anteriormente, este método cria uma rota que responde 
+    // quando uma requisição `HTTP` é feita utilizando o método de requisição `delete`, o primeiro parâmetro deste 
+    // método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do 
+    // tipo `delete` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe 
+    // dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do 
+    // cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie 
+    // informações de volta para o cliente
     app.delete("/pessoa/:id", async (request, response) => {
         // tenta executar o bloco
         try {
-            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por
-            // sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado 
+            // `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o 
+            // parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado 
+            // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
-            // aguarda a execução do método `excluir` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
+            // aguarda a execução do método `excluir` da classe `Pessoa` contida no objeto de retorno do método 
+            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
+            // passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.excluir(id)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -573,13 +632,18 @@ void async function () {
         
         // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
         catch (e) {
-            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte 
+            // do servidor
             response.statusCode = 500
             // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }
     })
 
+     // executa o método `listen` do objeto `Express` criado anteriormente, este método inicia o servidor, o 
+     // primeiro parâmetro diz respeito em qual porta o serviço deve ser executado, e o segundo parâmetro é um 
+     // `callback` executado assim que o servidor inicializar, neste caso em específico o `callback` tem apenas uma 
+     // instrução que imprime o terminal uma frase informando foi inicializado
     app.listen(8080, () => console.log("⚡ Servidor HTTP inicado!"))
 }()
 ```
