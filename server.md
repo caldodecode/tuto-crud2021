@@ -1,26 +1,29 @@
-# 1 - Servidor/API Rest API
+# 1 Servidor/API Rest API
 
 ...
 
-## 1.1 - Conhecimentos Necessários
+## 1.1 Conhecimentos Necessários
 
 - Lógica de Programação
     -
 - O que são APIs 
-    - ["Dicionário do Programador"](https://www.youtube.com/watch?v=vGuqKIRWosk)
+    - ["Vídeo\Dicionário do Programador"](https://www.youtube.com/watch?v=vGuqKIRWosk)
 - Json 
-    - [Dicionário do Programador"](https://www.youtube.com/watch?v=P81dE-tkaaA)
+    - [Vídeo - Dicionário do Programador"](https://www.youtube.com/watch?v=P81dE-tkaaA)
     - [DevMedia](https://www.devmedia.com.br/json-tutorial/25275)
 - POO - Programação Orientada a Objetos 
-    -  [Dicionário do Programador](https://www.youtube.com/watch?v=QY0Kdg83orY)
+    -  [Vídeo - Dicionário do Programador](https://www.youtube.com/watch?v=QY0Kdg83orY)
 - Javascript/ECMAScript
     - ["MDN Web Docs"](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- Modulos Javascript
+    - ["Vídeo - High Tech Cursos Fábrica de Programador"](https://www.youtube.com/watch?v=6Avdyl8YgWg)
+    - ["MDN Web Docs"](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Modules)
 - URL
     - ["Caldo de Code"](https://www.youtube.com/watch?v=YccUWE6dito)
 - HTTP
-    - ["Dicionário do Programador"](https://www.youtube.com/watch?v=hwttZtWkXTk)
+    - ["Vídeo - Dicionário do Programador"](https://www.youtube.com/watch?v=hwttZtWkXTk)
 
-# 2 - Preparação do Ambiente de Desenvolvimento
+# 2 Preparação do Ambiente de Desenvolvimento
  
 Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o `NPM` instalados em seu computador:
 - para usuários windows acesse [o site do nodejs para download](https://nodejs.org/en/download/), baixe a versão adequada para sua máquina, e faça o clássico _next > next > finish_.
@@ -28,7 +31,7 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
    - Fedora: `dnf install nodejs`
    - Ubuntu: `apt install nodejs npm`
  
-## 2.1 - Estrutura de arquivos inicial
+## 2.1 Estrutura de arquivos inicial
  
 Crie manualmente a seguinte estrutura de arquivos:
  
@@ -41,7 +44,7 @@ tutorial/             # pasta raiz geral de nosso projeto
 └─ test-pessoa.http   # onde escreveremos testes dos endpoints (necessário para testes antes do desenvolvimento da interface)
 ```
  
-## 2.2 - Instalação de dependências
+## 2.2 Instalação de dependências
  
 Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal > New Terminal`, execute os comandos abaixo:
   
@@ -62,11 +65,11 @@ npm install --save-dev @types/node @types/express @types/sqlite3
 npx tsc --init
 ```
  
-### 2.2.1 - O que o comando `npm init -y` faz?
+### 2.2.1 O que o comando `npm init -y` faz?
  
 Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensíveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
  
-### 2.2.2 - O que o comando `npm install express sqlite sqlite3` faz?
+### 2.2.2 O que o comando `npm install express sqlite sqlite3` faz?
 
 Ao executar esse comando, o `npm` baixa três bibliotecas `express`, `sqlite` e `sqlite3`, bem como as interdependências destas bibliotecas:
 - O `npm` baixa e salva todas estas bibliotecas em uma pasta chamada `node_modules`.
@@ -80,24 +83,24 @@ Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 - *sqlite3*: Esta biblioteca permite a manipulação de bancos de dados sqlite. [maiores informações no site oficial](https://github.com/mapbox/node-sqlite3).
 - *sqlite*: Esta biblioteca permite a utilização da biblioteca `sqlite3` de maneira assíncrona. [maiores informaçõe no site oficial](https://github.com/kriasoft/node-sqlite#readme).
  
-### 2.2.3 - O que o comando `npm install --save-dev typescript ts-node` faz?
+### 2.2.3 O que o comando `npm install --save-dev typescript ts-node` faz?
  
 Assim como o comando anterior, este também instala bibliotecas, nesta caso ele instala a biblioteca `typescript` e `ts-node`, estas bibliotecas são necessárias somente no momento de desenvolvimento da aplicação, por este motivo foi adicionado o parâmetro `--save-dev` ao comando. A única coisa que este comando difere do anterior é que ao invés de criar as referências dentro da chave `dependencies` do arquivo `package.json`, esta cria dentro da chave `devDependencies`, marcando-as assim como dependências necessárias somente para o desenvolvimento da aplicação.
 Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 - *typescript*: TypeScript é um superconjunto de JavaScript desenvolvido pela Microsoft que adiciona tipagem e alguns outros recursos a linguagem. [maiores informaçõe no site oficial](https://www.typescriptlang.org/)
 - *ts-node*: Permite que o typescript seja executado sem a necessidade de criar os arquivos de distribuição da aplicação, facilitando assim o desenvolvimento da aplicação. [maiores informaçõe no site oficial](https://github.com/TypeStrong/ts-node#readme)
  
-### 2.2.4 - O que o comando `npm install --save-dev @types/node @types/express @types/sqlite3` faz?
+### 2.2.4 O que o comando `npm install --save-dev @types/node @types/express @types/sqlite3` faz?
  
 Assim como o comando anterior, instala bibliotecas como bibliotecas necessárias para o desenvolvimento da aplicação, porém estas bibliotecas são utilizadas para ajudar o `vscode` com o _auto complete_, facilitando assim a escrita do código. De fato estas bibliotecas não são essenciais para o desenvolvimento, porém elas auxiliam o `typescript` e consequentemente o `vscode` a entender os tipos e dependências das bibliotecas `express`, `sqlite3` e do próprio `NodeJs`, isso melhora a capacidade do `vscode` em _auto completar_ trechos de código.
  
-### 2.2.5 - O que o comando `npx tsc --init` faz?
+### 2.2.5 O que o comando `npx tsc --init` faz?
  
 Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo é importante para informar como os arquivos `javascript` serão criados, neste arquivo temos informações como, para qual versão `javascript` o `typescript` deve compilar, em qual pasta esses arquivos devem ser gerados, dentre outras informações pertinentes.
  
 > É importante pontuar que neste momento utilizamos o comando com o prefixo `npx`,  este prefixo é utilizado quando se faz necessário executar um binário de uma  biblioteca instalada localmente ou seja, que está dentro da pasta `node_modules`, neste caso executamos o comando `tsc`, sigla para typescript compiler, com o parâmetro `--init`
  
-## 2.3 - Estrutura final de arquivos
+## 2.3 Estrutura final de arquivos
  
 ```bash
 tutorial/                # criado pelo desenvolvedor
@@ -113,7 +116,7 @@ tutorial/                # criado pelo desenvolvedor
    └─ tsconfig.json      # criado ao executar `npx tsc --init`
 ```
  
-## 2.4 - Configuração do projeto `package.json`
+## 2.4 Configuração do projeto `package.json`
  
 Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` parecido com o listado abaixo, precisaremos alterar algumas coisas e alterar outras:
  
@@ -182,7 +185,7 @@ o resultado final do nossa arquivo `package.json` deve ser a seguinte:
 ```
  
  
-## 2.5 - Configuração do transpilador/typescript `tsconfig.json`
+## 2.5 Configuração do transpilador/typescript `tsconfig.json`
  
 O arquivo `tsconfig.json` que foi gerado no momento da execução do comando `npx tsc --init` tem todas as possíveis chaves de configurações, por isso é um arquivo relativamente grande, porém para este projeto iremos nos focar em apenas dois atributos definidos nele, o `"target"`, que define a versão do `javascript` para a qual iremos compilar/transpilar o `typescript` e. o `"outDir"`, que é a pasta onde os arquivos `javascript` serão salvos.
  
@@ -204,11 +207,11 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
 }
 ```
  
-## 2.6 - Testando/Executando o ambiente
+## 2.6 Testando/Executando o ambiente
 
 Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
 
-### 2.6.1 - Criando uma versão de distribuição 
+### 2.6.1 Criando uma versão de distribuição 
 
 Execute o comando abaixo para compilar os arquivos `TypeScript` para `Javascript`, se tudo ocorrer bem uma pasta chamada `dist` deve ser criada com os arquivos `javascript` de uma versão de distribuição.
 
@@ -222,14 +225,16 @@ Para executar a versão de distribuição que você acabou de criar execute o se
 node dist\main.js
 ```
 
-### 2.6.2 - Testando a aplicação 
+### 2.6.2 Testando a aplicação 
 
 ```bash
 npm run dev
 ```
 
  
-# :construction_worker: 3 - Acesso e manipulação do banco de dados
+# 3 Acesso e manipulação do banco de dados
+ 
+O arquivo `src/database.ts` será o nosso módulo responsável por criar o banco de dados `SQLite` e suas tabelas caso não existam, bem como exportar as funções necessárias para manipulação dos dados, logo abaixo temos o arquivo editado e comentado para que seja possível compreender seu funcionamento:
 
 **`src/database.ts`**
 ```typescript
@@ -271,6 +276,9 @@ export async function initDatabase() {
     }
 
     // define classe `Pessoa` com todos os métodos necessários para manipulação dos dados da tabela pessoa
+    // *** ATENÇÃO *** é necessário ressaltar a importância de serem criados arquivos de módulos para
+    //             *** organização do código, porém para fins didáticos a classe `Pessoa` está sendo definida
+    //             *** aqui mesmo neste arquivo.
     class Pessoa {
         // define método estático que lista todas as pessoas contidas na tabela pessoas do banco de dados
         static async listar() {
@@ -281,8 +289,8 @@ export async function initDatabase() {
             return result
         }
 
-        // define método estático que lista os dados de uma pessoa específica contido na tabela pessoa, este método 
-        // recebe um parâmetro chamado `id` do tipo `number` que será utilizado para selecionar somente os dados da 
+        // define método estático que lista os dados de uma pessoa específica contido na tabela pessoa, este método
+        // recebe um parâmetro chamado `id` do tipo `number` que será utilizado para selecionar somente os dados da
         // pessoa que tenha este `id`
         static async listarUm(id: number) {
             // aguarda execução da busca de dados de uma pessoa específica filtrada pelo campo `id`, contida na 
@@ -370,6 +378,8 @@ export async function initDatabase() {
 }
 ```
 
+## 3.1 Teste do módulo de acesso ao banco de dados
+
 **`src/main.ts`**
 
 > :warning: **ATENÇÃO** o arquivo `main.ts` somente será alterado neste momento para que seja possível executar teste a fim de verificar se o que foi desenvolvido até o momento está em ordem, nos próximos passos iremos remover estas alterações.
@@ -418,7 +428,7 @@ void async function () {
 }()
 ```
 
-Se tudo ocorreu bem, ao executar o comando `npm run dev`, você deve ver o seguinte resultado em seu terminal.
+Se tudo ocorreu bem, ao executar o comando `npm run dev` no terminal, deve ver o seguinte resultado em seu terminal.
 
 ```bash
 Todas as pessoas: [
@@ -448,66 +458,123 @@ Sr. Code de Cana: [
 ]
 ```
 
-# :construction_worker: 4 - Criação de _endpoints_
+# :construction_worker: 4 Criação de _endpoints_
 
-Endpoints nada mais são que os caminhos que a nossa aplicação expõe para os usuários, estes caminhos normalmente são acessiveis pelo protocolo HTTP,
-
+`Endpoints` são caminhos para funcionalidades que a aplicações expõe para uso de terceiros, estes caminhos normalmente são acessíveis por HTTP, nesta aplicação para fins didáticos escreveremos todos os `endpoints` no arquivo principal `src\main.ts`, mas é extremamente importante que estas rotas de acesso sejam escritas de forma a propiciar manutenções futuras e não expor métodos e funções que possam pôr em risco a segurança da aplicação.
+ 
+Abaixo temos o arquivo contendo todos os `endpoints` de nossa aplicação, nesta aplicação fizemos um `endpoint` para cada um dos métodos contidos na classe `Pessoa` definido no módulo `src/Database.ts`, o arquivo está  comentado para que seja possível compreender seu funcionamento:
+ 
 **`src\main.ts`**
+ 
+> :warning: **ATENÇÃO** neste exemplo não será explicado como `try/catch` funcionam, vale pesquisa sobre o assunto caso não compreenda o funcionamento dessas diretivas, também neste exemplo para fins didáticos não serão efetuados todos os testes de dados recebidos nas requisições `HTTP` nos limitando apenas em retornar status de erro `500` quando não for possível efetuar qualquer ação, seja um erro de programação ou insucesso ao executar ação no banco de dados. 
+
 ```typescript
+// importa o método initDatabse do módulo `src/database.ts` criado no item 3 
 import { initDatabase } from "./database"
+
+// importa o a funcão padrão do modulo `express` e a armazena em uma constante chamada `express`, esta função será utilizada para criar um objeto da classe `Express` que nos auxilia-ra a criar nosso servidor `HTTP` e os `endpoints`de nossa aplicação 
 import express from "express"
+
+// importa a função `json` do módulo `body-parser`, esta função auxilia-rá a o recebimento de informações no formato `json` em nossos `endpoins`
 import { json } from "body-parser"
 
+// cria a função principal de nossa aplicação e a executa imediatamente
 void async function () {
+    // aguarda a execução da função initDatabase e armazena seu resultado em uma constante aqui nomeada como `db`
     const db = await initDatabase()
+    
+    // executa a função `express` responsável por criar um objeto da classe `Express` e o armazena em uma constante chamada `app`
     const app = express()
 
+    // executa o método `use` do objeto `Express` criado anteriormente, passando como parâmetro o retorno da execução da função `json` do , módulo `body-parser`, o método `use` é utilizado para que em todo e qualquer `endpoint` seja executado a função recebida como parâmetro (vale ressaltar que a função `json` retorna uma outra função e esta sim é executada em cada acesso de nossos `endpoints`, caso não entenda o conceito de `callbacks` sugiro breve pesquisa na internet ou contato com o Prof. Varela ;D)
     app.use(json())
 
+    // executa o método `get` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `get`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `get` é efetuada no caminho `/pessoa`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente 
     app.get("/pessoa", async (request, response) => {
+        // aguarda a execução do método `listar` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`,
         const result = await db.Pessoa.listar()
+        // converte o valor de `result` para `json` e reponde a requisição
         response.json(result)
     })
 
+    // executa o método `get` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `get`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `get` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
     app.get("/pessoa/:id", async (request, response) => {
+        // tenta executar o bloco
         try {
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
+            // aguarda a execução do método `listarUm` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.listarUm(id)
+            // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
-        } catch (e) {
+        } 
+        
+        // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
+        catch (e) {
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
             response.statusCode = 500
+            // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }
     })
 
+    // executa o método `post` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `post`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `post` é efetuada no caminho `/pessoa`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
     app.post("/pessoa", async (request, response) => {
+        // tenta executar o bloco
         try {   
+            // aguarda a execução do método `adicionar` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.adicionar(request.body)
+            // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
-        } catch (e) {
+        } 
+        
+        // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
+        catch (e) {
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
             response.statusCode = 500
+            // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }
     })
 
+    // executa o método `put` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `put`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `put` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
     app.put("/pessoa/:id", async (request, response) => { 
+        // tenta executar o bloco
         try {
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
+            // aguarda a execução do método `alterar` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como primeiro parâmetro da função o valor tratado no passo anterior, passa como segundo parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.alterar(id, request.body)
+            // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
-        } catch (e) {
+        } 
+        
+        // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
+        catch (e) {
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
             response.statusCode = 500
+            // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }    
     })
 
+    // executa o método `delete` do objeto `Express` criado anteriormente, este método cria uma rota que responde quando uma requisição `HTTP` é feita utilizando o método de requisição `delete`, o primeiro parâmetro deste método diz respeito a qual caminho o servidor deve responder, neste caso quando uma requisição `HTTP` do tipo `delete` é efetuada no caminho `/pessoa/'variavel'`, o segundo parâmetro é um `callback` que recebe dois parâmetros, o primeiro aqui nomeado como `request` é utilizado para análise de informações enviadas do cliente para este servidor, já o segundo, aqui nomeado como `response` é utilizado para que o servidor envie informações de volta para o cliente
     app.delete("/pessoa/:id", async (request, response) => {
+        // tenta executar o bloco
         try {
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
+            // aguarda a execução do método `excluir` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.excluir(id)
+            // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
-        } catch (e) {
+        } 
+        
+        // caso algum erro ocorra no bloco `try`, atribui objeto contendo detralhes deste erro para o parâmetro `e`
+        catch (e) {
+            // muda o staus de resposta do `HTTP` para `500`, que diz respeito a erro genérico ocorrido por parte do servidor
             response.statusCode = 500
+            // converte o detalhes do erro para `json` e responde a requisição
             response.json(e)
         }
     })
@@ -516,9 +583,11 @@ void async function () {
 }()
 ```
 
-# :construction_worker: 5 - Testar a API
-
+# :construction_worker: 5 Testar a API
+ 
 Sem um cliente não é possível fazer o teste dos endpoints criado na API, por isso utilizaremos um plugin do `VSCode` chamado `REST Client - humao.rest-client`, por hora utilizaremos este plugin para substituir nossa aplicação cliente.
+ 
+> Para instalar extensões no `VSCode`, vá até o menu `View > Extensions` e pressione o atalho `CTRL+SHIFT+X` ou clique no último ícone da barra lateral (Activity Bar), pesquise pelo nome da extensão e clique em instalar.
 
 **`test-pessoa.http`**
 ```
