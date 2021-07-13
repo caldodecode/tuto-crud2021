@@ -47,6 +47,8 @@ tutorial/             # pasta raiz geral de nosso projeto
 ## 2.2 Instalação de dependências
  
 Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal > New Terminal`, execute os comandos abaixo:
+
+> :warning: **ATENÇÃO** é importante que a pasta **SERVER** seja arrastado e não a pasta **TUTORIAL** ou **SRC**
   
 ```bash
 # criação do arquivo de configuração do projeto
@@ -209,7 +211,7 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
  
 ## 2.6 Testando/Executando o ambiente
 
-Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `tutorial/server/src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
+Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `./src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
 
 ### 2.6.1 Criando uma versão de distribuição 
 
@@ -234,9 +236,9 @@ npm run dev
  
 # 3 Acesso e manipulação do banco de dados
  
-O arquivo `tutorial/server/src/database.ts` será o nosso módulo responsável por criar o banco de dados `SQLite` e suas tabelas caso não existam, bem como exportar as funções necessárias para manipulação dos dados, logo abaixo temos o arquivo editado e comentado para que seja possível compreender seu funcionamento:
+O arquivo `./src/database.ts` será o nosso módulo responsável por criar o banco de dados `SQLite` e suas tabelas caso não existam, bem como exportar as funções necessárias para manipulação dos dados, logo abaixo temos o arquivo editado e comentado para que seja possível compreender seu funcionamento:
 
-**`tutorial/server/src/database.ts`**
+**`./src/database.ts`**
 ```typescript
 // importa a biblioteca `sqlite3`, que servirá de driver para acesso ao banco de dados
 import sqlite3 from "sqlite3"
@@ -380,7 +382,7 @@ export async function initDatabase() {
 
 ## 3.1 Teste do módulo de acesso ao banco de dados
 
-**`tutorial/server/src/main.ts`**
+**`./src/main.ts`**
 
 > :warning: **ATENÇÃO** o arquivo `main.ts` somente será alterado neste momento para que seja possível executar teste a fim de verificar se o que foi desenvolvido até o momento está em ordem, nos próximos passos iremos remover estas alterações.
 
@@ -462,14 +464,14 @@ Sr. Code de Cana: [
 
 `Endpoints` são caminhos para funcionalidades que a aplicações expõe para uso de terceiros, estes caminhos normalmente são acessíveis por HTTP, nesta aplicação para fins didáticos escreveremos todos os `endpoints` no arquivo principal `src\main.ts`, mas é extremamente importante que estas rotas de acesso sejam escritas de forma a propiciar manutenções futuras e não expor métodos e funções que possam pôr em risco a segurança da aplicação.
  
-Abaixo temos o arquivo contendo todos os `endpoints` de nossa aplicação, nesta aplicação fizemos um `endpoint` para cada um dos métodos contidos na classe `Pessoa` definido no módulo `tutorial/server/src/Database.ts`, o arquivo está  comentado para que seja possível compreender seu funcionamento:
+Abaixo temos o arquivo contendo todos os `endpoints` de nossa aplicação, nesta aplicação fizemos um `endpoint` para cada um dos métodos contidos na classe `Pessoa` definido no módulo `./src/Database.ts`, o arquivo está  comentado para que seja possível compreender seu funcionamento:
  
 **`src\main.ts`**
  
 > :warning: **ATENÇÃO** neste exemplo não será explicado como `try/catch` funcionam, vale pesquisa sobre o assunto caso não compreenda o funcionamento dessas diretivas, também neste exemplo para fins didáticos não serão efetuados todos os testes de dados recebidos nas requisições `HTTP` nos limitando apenas em retornar status de erro `500` quando não for possível efetuar qualquer ação, seja um erro de programação ou insucesso ao executar ação no banco de dados. 
 
 ```typescript
-// importa o método initDatabse do módulo `tutorial/server/src/database.ts` criado no item 3 
+// importa o método initDatabse do módulo `./src/database.ts` criado no item 3 
 import { initDatabase } from "./database"
 
 // importa o a funcão padrão do modulo `express` e a armazena em uma constante chamada `express`, esta função será 
@@ -506,7 +508,7 @@ void async function () {
     // volta para o cliente 
     app.get("/pessoa", async (request, response) => {
         // aguarda a execução do método `listar` da classe `Pessoa` contida no objeto de retorno do método 
-        // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante nomeada 
+        // `initDatabase` do módulo `./src/database.ts` e armazena a mesma em uma constante nomeada 
         // `result`,
         const result = await db.Pessoa.listar()
         // converte o valor de `result` para `json` e responde a requisição
@@ -529,7 +531,7 @@ void async function () {
             // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `listarUm` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // `initDatabase` do módulo `./src/database.ts` e armazena a mesma em uma constante 
             // nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.listarUm(id)
             // converte o valor de `result` para `json` e responde a requisição
@@ -557,7 +559,7 @@ void async function () {
         // tenta executar o bloco
         try {   
             // aguarda a execução do método `adicionar` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // `initDatabase` do módulo `./src/database.ts` e armazena a mesma em uma constante 
             // nomeada `result`, passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo 
             // `body-parser`
             const result = await db.Pessoa.adicionar(request.body)
@@ -591,7 +593,7 @@ void async function () {
             // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `alterar` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // `initDatabase` do módulo `./src/database.ts` e armazena a mesma em uma constante 
             // nomeada `result`, passa como primeiro parâmetro da função o valor tratado no passo anterior, passa 
             // como segundo parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.alterar(id, request.body)
@@ -625,7 +627,7 @@ void async function () {
             // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `excluir` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // `initDatabase` do módulo `./src/database.ts` e armazena a mesma em uma constante 
             // nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.excluir(id)
             // converte o valor de `result` para `json` e responde a requisição
@@ -650,7 +652,7 @@ void async function () {
 }()
 ```
 
-# :construction_worker: 5 Testar a API
+# 5 Testar a API
  
 Sem um cliente não é possível fazer o teste dos `endpoints` criados, por isso utilizaremos um plugin do `VSCode` chamado `REST Client` (plugin identifier `humao.rest-client`), para substituir temporariamente nossa aplicação cliente.
  
