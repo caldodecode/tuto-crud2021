@@ -103,16 +103,16 @@ Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo 
 ## 2.3 Estrutura final de arquivos
  
 ```bash
-tutorial/                # criado pelo desenvolvedor
-└─ server/               # criado pelo desenvolvedor
+tutorial/                # criado manualmente
+└─ server/               # criado manualmente
    ├─ node_modules/      # criado ao executar `npm install ...`
    ├─ dist/              # criado futuramente ao executar `npm run build`
-   ├─ src/               # criado pelo desenvolvedor
-   │  ├─ main.ts         # criado pelo desenvolvedor
-   │  └─ database.ts     # criado pelo desenvolvedor
+   ├─ src/               # criado manualmente
+   │  ├─ main.ts         # criado manualmente
+   │  └─ database.ts     # criado manualmente
    ├─ package.json       # criado ao executar `npm init`
    ├─ package-lock.json  # criado ao executar `npm install ...`
-   ├─ test-pessoa.http   # criado pelo desenvolvedor
+   ├─ test-pessoa.http   # criado manualmente
    └─ tsconfig.json      # criado ao executar `npx tsc --init`
 ```
  
@@ -652,13 +652,13 @@ void async function () {
 
 # :construction_worker: 5 Testar a API
  
-Sem um cliente não é possível fazer o teste dos endpoints criados, por isso utilizaremos um plugin do `VSCode` chamado `REST Client` (plugin identifier `humao.rest-client`), para substituir temporariamente nossa aplicação cliente.
+Sem um cliente não é possível fazer o teste dos `endpoints` criados, por isso utilizaremos um plugin do `VSCode` chamado `REST Client` (plugin identifier `humao.rest-client`), para substituir temporariamente nossa aplicação cliente.
  
-> Para instalar extensões no `VSCode`, vá até o menu `View > Extensions` e pressione o atalho `CTRL+SHIFT+X` ou clique no último ícone da barra lateral (Activity Bar), pesquise pelo nome da extensão e clique em instalar.
+> Para instalar extensões no `VSCode`, vá até o menu `View > Extensions` ou pressione o as teclas de atalho `CTRL + SHIFT + X` em seu teclado, ou clique no último ícone da barra lateral (Activity Bar), então pesquise pelo nome da extensão e clique em instalar.
 
 Com este plugin é possível e executar requisições `HTTP`, para isso é necessário a criação de um arquivo com extensão `.http` ou `.rest`, cada arquivo pode ter uma ou mais requisições separadas por `###`, vale ressaltar que aqui somente para fins didáticos as requisições não utilizarão recursos avançados deste plugin, mas sugiro que pesquise sobre o mesmo pois ele tem uma infinidade de funcionalidades úteis.
 
-**`test-pessoa.http`**
+**`tutorial\server\test-pessoa.http`**
 ```
 ### BUSCAR DADOS DE TODAS AS PESSOAS
 
