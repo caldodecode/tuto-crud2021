@@ -509,7 +509,7 @@ void async function () {
         // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante nomeada 
         // `result`,
         const result = await db.Pessoa.listar()
-        // converte o valor de `result` para `json` e reponde a requisição
+        // converte o valor de `result` para `json` e responde a requisição
         response.json(result)
     })
 
@@ -532,7 +532,7 @@ void async function () {
             // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
             // nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.listarUm(id)
-            // converte o valor de `result` para `json` e reponde a requisição
+            // converte o valor de `result` para `json` e responde a requisição
             response.json(result)
         } 
         
@@ -561,7 +561,7 @@ void async function () {
             // nomeada `result`, passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo 
             // `body-parser`
             const result = await db.Pessoa.adicionar(request.body)
-            // converte o valor de `result` para `json` e reponde a requisição
+            // converte o valor de `result` para `json` e responde a requisição
             response.json(result)
         } 
         
@@ -595,7 +595,7 @@ void async function () {
             // nomeada `result`, passa como primeiro parâmetro da função o valor tratado no passo anterior, passa 
             // como segundo parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.alterar(id, request.body)
-            // converte o valor de `result` para `json` e reponde a requisição
+            // converte o valor de `result` para `json` e responde a requisição
             response.json(result)
         } 
         
@@ -628,7 +628,7 @@ void async function () {
             // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
             // nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.excluir(id)
-            // converte o valor de `result` para `json` e reponde a requisição
+            // converte o valor de `result` para `json` e responde a requisição
             response.json(result)
         } 
         
@@ -656,7 +656,9 @@ Sem um cliente não é possível fazer o teste dos `endpoints` criados, por isso
  
 > Para instalar extensões no `VSCode`, vá até o menu `View > Extensions` ou pressione o as teclas de atalho `CTRL + SHIFT + X` em seu teclado, ou clique no último ícone da barra lateral (Activity Bar), então pesquise pelo nome da extensão e clique em instalar.
 
-Com este plugin é possível e executar requisições `HTTP`, para isso é necessário a criação de um arquivo com extensão `.http` ou `.rest`, cada arquivo pode ter uma ou mais requisições separadas por `###`, vale ressaltar que aqui somente para fins didáticos as requisições não utilizarão recursos avançados deste plugin, mas sugiro que pesquise sobre o mesmo pois ele tem uma infinidade de funcionalidades úteis.
+Com este plugin é possível e executar requisições `HTTP`, para isso é necessário a criação de um arquivo com extensão `.http` ou `.rest`, cada arquivo pode ter uma ou mais requisições separadas por `###`.
+
+> vale ressaltar que aqui somente para fins didáticos as requisições não utilizarão recursos avançados deste plugin, mas sugiro que pesquise sobre o mesmo pois ele tem uma infinidade de funcionalidades úteis.
 
 **`tutorial\server\test-pessoa.http`**
 ```
