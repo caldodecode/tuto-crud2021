@@ -209,7 +209,7 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
  
 ## 2.6 Testando/Executando o ambiente
 
-Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
+Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `tutorial/server/src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
 
 ### 2.6.1 Criando uma versão de distribuição 
 
@@ -234,9 +234,9 @@ npm run dev
  
 # 3 Acesso e manipulação do banco de dados
  
-O arquivo `src/database.ts` será o nosso módulo responsável por criar o banco de dados `SQLite` e suas tabelas caso não existam, bem como exportar as funções necessárias para manipulação dos dados, logo abaixo temos o arquivo editado e comentado para que seja possível compreender seu funcionamento:
+O arquivo `tutorial/server/src/database.ts` será o nosso módulo responsável por criar o banco de dados `SQLite` e suas tabelas caso não existam, bem como exportar as funções necessárias para manipulação dos dados, logo abaixo temos o arquivo editado e comentado para que seja possível compreender seu funcionamento:
 
-**`src/database.ts`**
+**`tutorial/server/src/database.ts`**
 ```typescript
 // importa a biblioteca `sqlite3`, que servirá de driver para acesso ao banco de dados
 import sqlite3 from "sqlite3"
@@ -380,7 +380,7 @@ export async function initDatabase() {
 
 ## 3.1 Teste do módulo de acesso ao banco de dados
 
-**`src/main.ts`**
+**`tutorial/server/src/main.ts`**
 
 > :warning: **ATENÇÃO** o arquivo `main.ts` somente será alterado neste momento para que seja possível executar teste a fim de verificar se o que foi desenvolvido até o momento está em ordem, nos próximos passos iremos remover estas alterações.
 
@@ -462,14 +462,14 @@ Sr. Code de Cana: [
 
 `Endpoints` são caminhos para funcionalidades que a aplicações expõe para uso de terceiros, estes caminhos normalmente são acessíveis por HTTP, nesta aplicação para fins didáticos escreveremos todos os `endpoints` no arquivo principal `src\main.ts`, mas é extremamente importante que estas rotas de acesso sejam escritas de forma a propiciar manutenções futuras e não expor métodos e funções que possam pôr em risco a segurança da aplicação.
  
-Abaixo temos o arquivo contendo todos os `endpoints` de nossa aplicação, nesta aplicação fizemos um `endpoint` para cada um dos métodos contidos na classe `Pessoa` definido no módulo `src/Database.ts`, o arquivo está  comentado para que seja possível compreender seu funcionamento:
+Abaixo temos o arquivo contendo todos os `endpoints` de nossa aplicação, nesta aplicação fizemos um `endpoint` para cada um dos métodos contidos na classe `Pessoa` definido no módulo `tutorial/server/src/Database.ts`, o arquivo está  comentado para que seja possível compreender seu funcionamento:
  
 **`src\main.ts`**
  
 > :warning: **ATENÇÃO** neste exemplo não será explicado como `try/catch` funcionam, vale pesquisa sobre o assunto caso não compreenda o funcionamento dessas diretivas, também neste exemplo para fins didáticos não serão efetuados todos os testes de dados recebidos nas requisições `HTTP` nos limitando apenas em retornar status de erro `500` quando não for possível efetuar qualquer ação, seja um erro de programação ou insucesso ao executar ação no banco de dados. 
 
 ```typescript
-// importa o método initDatabse do módulo `src/database.ts` criado no item 3 
+// importa o método initDatabse do módulo `tutorial/server/src/database.ts` criado no item 3 
 import { initDatabase } from "./database"
 
 // importa o a funcão padrão do modulo `express` e a armazena em uma constante chamada `express`, esta função será 
@@ -506,7 +506,8 @@ void async function () {
     // volta para o cliente 
     app.get("/pessoa", async (request, response) => {
         // aguarda a execução do método `listar` da classe `Pessoa` contida no objeto de retorno do método 
-        // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`,
+        // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante nomeada 
+        // `result`,
         const result = await db.Pessoa.listar()
         // converte o valor de `result` para `json` e reponde a requisição
         response.json(result)
@@ -528,8 +529,8 @@ void async function () {
             // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `listarUm` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
-            // passa como parâmetro da função o valor tratado no passo anterior
+            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.listarUm(id)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -556,8 +557,9 @@ void async function () {
         // tenta executar o bloco
         try {   
             // aguarda a execução do método `adicionar` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
-            // passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo `body-parser`
+            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // nomeada `result`, passa como parâmetro o valor (como objeto) já tratato pelo método `json` do módulo 
+            // `body-parser`
             const result = await db.Pessoa.adicionar(request.body)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -589,9 +591,9 @@ void async function () {
             // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `alterar` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
-            // passa como primeiro parâmetro da função o valor tratado no passo anterior, passa como segundo 
-            // parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
+            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // nomeada `result`, passa como primeiro parâmetro da função o valor tratado no passo anterior, passa 
+            // como segundo parâmetro o valor já tratato pelo método `json` do módulo `body-parser`
             const result = await db.Pessoa.alterar(id, request.body)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -623,8 +625,8 @@ void async function () {
             // em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `excluir` da classe `Pessoa` contida no objeto de retorno do método 
-            // `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, 
-            // passa como parâmetro da função o valor tratado no passo anterior
+            // `initDatabase` do módulo `tutorial/server/src/database.ts` e armazena a mesma em uma constante 
+            // nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.excluir(id)
             // converte o valor de `result` para `json` e reponde a requisição
             response.json(result)
@@ -650,27 +652,23 @@ void async function () {
 
 # :construction_worker: 5 Testar a API
  
-Sem um cliente não é possível fazer o teste dos endpoints criado na API, por isso utilizaremos um plugin do `VSCode` chamado `REST Client - humao.rest-client`, por hora utilizaremos este plugin para substituir nossa aplicação cliente.
+Sem um cliente não é possível fazer o teste dos endpoints criados, por isso utilizaremos um plugin do `VSCode` chamado `REST Client` (plugin identifier `humao.rest-client`), para substituir temporariamente nossa aplicação cliente.
  
 > Para instalar extensões no `VSCode`, vá até o menu `View > Extensions` e pressione o atalho `CTRL+SHIFT+X` ou clique no último ícone da barra lateral (Activity Bar), pesquise pelo nome da extensão e clique em instalar.
 
+Com este plugin é possível e executar requisições `HTTP`, para isso é necessário a criação de um arquivo com extensão `.http` ou `.rest`, cada arquivo pode ter uma ou mais requisições separadas por `###`, vale ressaltar que aqui somente para fins didáticos as requisições não utilizarão recursos avançados deste plugin, mas sugiro que pesquise sobre o mesmo pois ele tem uma infinidade de funcionalidades úteis.
+
 **`test-pessoa.http`**
 ```
-###
 ### BUSCAR DADOS DE TODAS AS PESSOAS
-###
 
 GET http://127.0.0.1:8080/pessoa HTTP/1.1
 
-###
 ### BUSCAR DADOS DE UMA PESSOA POR ID
-###
 
 GET http://127.0.0.1:8080/pessoa/1 HTTP/1.1
 
-###
 ### ADICIONAR NOVA PESSOA
-###
 
 POST http://127.0.0.1:8080/pessoa HTTP/1.1
 content-type: application/json
@@ -682,9 +680,7 @@ content-type: application/json
     "email": "caldo@mail.com"
 }
 
-###
 ### ALTERAR UMA PESSOA PELO ID
-###
 
 PUT http://127.0.0.1:8080/pessoa/1 HTTP/1.1
 content-type: application/json
@@ -696,9 +692,7 @@ content-type: application/json
     "email": "ALTERADO@mail.com"
 }
 
-###
 ### EXCLUIR PESSOA POR ID
-###
 
 DELETE http://127.0.0.1:8080/pessoa/1 HTTP/1.1
 
