@@ -562,7 +562,8 @@ void async function () {
     app.delete("/pessoa/:id", async (request, response) => {
         // tenta executar o bloco
         try {
-            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
+            // busca no objeto `request` que contém informações sobre a requisição, um objeto objeto filho chamado `params`, este por
+            // sua vez contém os valores definidos no caminho da requisição, neste caso temos o parâmetro nomeado `:id`, então este valor é convertido em um número inteiro e o mesmo é armazenado em uma constante nomeada como `ìd`
             const id = parseInt(request.params.id)
             // aguarda a execução do método `excluir` da classe `Pessoa` contida no objeto de retorno do método `initDatabase` do módulo `src/database.ts` e armazena a mesma em uma constante nomeada `result`, passa como parâmetro da função o valor tratado no passo anterior
             const result = await db.Pessoa.excluir(id)
