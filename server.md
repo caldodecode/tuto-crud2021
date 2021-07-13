@@ -458,7 +458,7 @@ Sr. Code de Cana: [
 ]
 ```
 
-# :construction_worker: 4 Criação de _endpoints_
+# 4 Criação de _endpoints_
 
 `Endpoints` são caminhos para funcionalidades que a aplicações expõe para uso de terceiros, estes caminhos normalmente são acessíveis por HTTP, nesta aplicação para fins didáticos escreveremos todos os `endpoints` no arquivo principal `src\main.ts`, mas é extremamente importante que estas rotas de acesso sejam escritas de forma a propiciar manutenções futuras e não expor métodos e funções que possam pôr em risco a segurança da aplicação.
  
