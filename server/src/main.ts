@@ -1,42 +1,60 @@
-// 
 import { initDatabase } from "./database"
+import express from "express"
+import { json } from "body-parser"
 
 void async function () {
     const db = await initDatabase()
+    const app = express()
 
-    await db.Pessoa.adicionar({
-        nome: "Caldo",
-        sobrenome: "de Code",
-        telefone: "47 9XXXX XXXX",
-        email: "caldo@mail.com"
+    app.use(json())
+
+    app.get("/pessoa", async (request, response) => {
+        const result = await db.Pessoa.listar()
+        response.json(result)
     })
 
-    await db.Pessoa.adicionar({
-        nome: "ONONO",
-        sobrenome: "SEREI DELETADO",
-        telefone: "47 9XXXX XXXX",
-        email: "onono@mail.com"
+    app.get("/pessoa/:id", async (request, response) => {
+        try {
+            const id = parseInt(request.params.id)
+            const result = await db.Pessoa.listarUm(id)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }
     })
 
-    await db.Pessoa.adicionar({
-        nome: "Code",
-        sobrenome: "de Cana",
-        telefone: "47 9XXXX XXXX",
-        email: "code@mail.com"
+    app.post("/pessoa", async (request, response) => {
+        try {
+            const result = await db.Pessoa.adicionar(request.body)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }
     })
 
-    await db.Pessoa.alterar(1, {
-        nome: "Caldo (alterado)",
-        sobrenome: "de Code",
-        telefone: "47 9XXXX XXXX",
-        email: "caldo@mail.com"
+    app.put("/pessoa/:id", async (request, response) => { 
+        try {
+            const id = parseInt(request.params.id)
+            const result = await db.Pessoa.alterar(id, request.body)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }    
     })
 
-    await db.Pessoa.excluir(2)
+    app.delete("/pessoa/:id", async (request, response) => {
+        try {
+            const id = parseInt(request.params.id)
+            const result = await db.Pessoa.excluir(id)
+            response.json(result)
+        } catch (e) {
+            response.statusCode = 500
+            response.json(e)
+        }
+    })
 
-    const pessoas = await db.Pessoa.listar()
-    console.log("Todas as pessoas:", pessoas)
-
-    const pessoa = await db.Pessoa.listarUm(3)
-    console.log("Sr. Code de Cana:", pessoa)
+    app.listen(8080, () => console.log("⚡ Servidor HTTP inicado!"))
 }()

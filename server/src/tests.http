@@ -1,0 +1,69 @@
+# GET 	    /pessoa         : Get all devices
+# GET 	    /pessoa/{id}    : Get the device information identified by "id"
+# POST 	    /pessoa         : Create a new device
+# PUT 	    /pessoa/{id}    : Update the device information identified by "id"
+# DELETE	/pessoa/{id}    : Delete device by "id"
+
+# STATUS CODE
+# 100-level (Informational) – server acknowledges a request
+# ---
+# 200-level (Success)       – server completed the request as expected
+# ---
+# 300-level (Redirection)   – client needs to perform further actions to complete the request
+# ---
+# 400-level (Client error)  – client sent an invalid request
+# 400 Bad Request           – client sent an invalid request, such as lacking required request body or parameter
+# 401 Unauthorized          – client failed to authenticate with the server
+# 403 Forbidden             – client authenticated but does not have permission to access the requested resource
+# 404 Not Found             – the requested resource does not exist
+# 412 Precondition Failed   – one or more conditions in the request header fields evaluated to false
+# ---
+# 500-level (Server error)  – server failed to fulfill a valid request due to an error with server
+# 500 Internal Server Error – a generic error occurred on the server
+# 503 Service Unavailable   – the requested service is not available
+
+###
+### BUSCAR DADOS DE TODAS AS PESSOAS
+###
+
+GET http://127.0.0.1:8080/pessoa HTTP/1.1
+
+###
+### BUSCAR DADOS DE UMA PESSOA POR ID
+###
+
+GET http://127.0.0.1:8080/pessoa/4 HTTP/1.1
+
+###
+### ADICIONAR NOVA PESSOA
+###
+
+POST http://127.0.0.1:8080/pessoa HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Caldo",
+    "sobrenome": "de Code",
+    "telefone": "47 9XXXX XXXX",
+    "email": "caldo@mail.com"
+}
+
+###
+### ALTERAR UMA PESSOA PELO ID
+###
+
+PUT http://127.0.01:8080/pessoa/3 HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Caldo (ALTERADO)",
+    "sobrenome": "de Code",
+    "telefone": "47 9XXXX XXXX",
+    "email": "ALTERADO@mail.com"
+}
+
+###
+### EXCLUIR PESSOA POR ID
+###
+
+DELETE http://127.0.0.1:8080/pessoa/5 HTTP/1.1
