@@ -1,0 +1,23 @@
+{
+  "name": "tuto-crud2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caldodecode/tuto-crud2021.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caldodecode/tuto-crud2021/issues"
+  },
+  "homepage": "https://github.com/caldodecode/tuto-crud2021#readme",
+  "devDependencies": {
+    "parcel": "^2.0.0-nightly.769"
+  }
+}
