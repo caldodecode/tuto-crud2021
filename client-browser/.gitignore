@@ -2,5 +2,4 @@
 dist/
 dist-dev/
 node_modules/
-database.db
 package-lock.json
