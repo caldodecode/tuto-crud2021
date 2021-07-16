@@ -8,9 +8,9 @@ tutorial/                        # pasta raiz geral de nosso projeto
    └─ src/                       # pasta onde colocaremos nosso código fonte
       ├─ components/             #
       │  └─ form-pessoa          #
-      │     ├─ form-pessoa.ts    #
       │     ├─ form-pessoa.html  #
-      │     └─ form-pessoa.scss  # 
+      │     ├─ form-pessoa.css   #
+      │     └─ index.ts          # 
       ├─ index.html              # 
       ├─ .d.ts                   #
       ├─ index.html              # 
