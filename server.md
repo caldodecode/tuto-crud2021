@@ -200,7 +200,7 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
  "compilerOptions": {
    "target": "ES2020",                             // linha alterada
    "module": "commonjs",
-   "outDir": "./dis",                              // linha alterada
+   "outDir": "./dist",                             // linha alterada
    "strict": true,
    "esModuleInterop": true,
    "skipLibCheck": true,
