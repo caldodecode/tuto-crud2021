@@ -11,7 +11,6 @@ tutorial/                        # pasta raiz geral de nosso projeto
       │     ├─ form-pessoa.html  #
       │     ├─ form-pessoa.css   #
       │     └─ index.ts          # 
-      ├─ index.html              # 
       ├─ .d.ts                   #
       ├─ index.html              # 
       ├─ main.scss               # 
