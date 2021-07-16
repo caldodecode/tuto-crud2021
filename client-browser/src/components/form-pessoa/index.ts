@@ -1,20 +1,31 @@
-import style from "bundle-text:./form-pessoa.scss"
-import html from "bundle-text:./form-pessoa.html"
+//
+import stringStyle from "bundle-text:./form-pessoa.scss"
 
+//
+import stringHtml from "bundle-text:./form-pessoa.html"
+
+//
 class FormPessoa extends HTMLElement {
-    private _root = this.attachShadow({mode: "closed"})
-    private _style = document.createElement("style")
-    private _main = document.createElement("main")
+    //
+    private _root = this.attachShadow({ mode: "closed" })
     
+    //
     constructor() {
+        //
         super()
-        this._style.innerHTML = style
-        this._main.innerHTML = html
-        this._root.append(
-            this._style,
-            this._main
-        )
+
+        //
+        const style = document.createElement("style")
+        const main = document.createElement("main")
+
+        //
+        main.innerHTML = stringStyle
+        style.innerHTML = stringHtml
+
+        //
+        this._root.append(style, main)
     }
 }
 
+//
 customElements.define("comp-form-pessoa", FormPessoa)
