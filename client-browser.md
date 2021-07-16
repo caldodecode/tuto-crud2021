@@ -9,7 +9,7 @@ tutorial/                        # pasta raiz geral de nosso projeto
       ├─ components/             #
       │  └─ form-pessoa          #
       │     ├─ form-pessoa.html  #
-      │     ├─ form-pessoa.css   #
+      │     ├─ form-pessoa.scss  #
       │     └─ index.ts          # 
       ├─ .d.ts                   #
       ├─ index.html              # 
