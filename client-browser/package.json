@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel serve ./src/index.html --dist-dir=./dist-dev",
+    "build": "parcel build ./src/index.html --dist-dir=./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,8 @@
   },
   "homepage": "https://github.com/caldodecode/tuto-crud2021#readme",
   "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.0.0-nightly.771",
+    "@parcel/transformer-sass": "^2.0.0-nightly.771",
     "parcel": "^2.0.0-nightly.769"
   }
 }

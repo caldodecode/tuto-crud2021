@@ -7,11 +7,12 @@ tutorial/                        # pasta raiz geral de nosso projeto
 └─ client-browser/               # pasta da aplicação cliente -> arraste esta pasta para dentro do vscode
    └─ src/                       # pasta onde colocaremos nosso código fonte
       ├─ components/             #
-      │  ├─ form-pessoa          #
-      │  │  ├─ form-pessoa.ts    #
-      │  │  ├─ form-pessoa.html  #
-      │  │  └─ form-pessoa.scss  # 
-      │  └─ componets.d.ts       #
+      │  └─ form-pessoa          #
+      │     ├─ form-pessoa.ts    #
+      │     ├─ form-pessoa.html  #
+      │     └─ form-pessoa.scss  # 
+      ├─ index.html              # 
+      ├─ .d.ts                   #
       ├─ index.html              # 
       ├─ main.scss               # 
       └─ main.ts                 # 
