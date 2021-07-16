@@ -15,3 +15,7 @@ tutorial/                        # pasta raiz geral de nosso projeto
             ├─ form-pessoa.html  #
             └─ form-pessoa.scss  # 
 ```
+
+```bash
+npm init -y
+```
