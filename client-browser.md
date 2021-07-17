@@ -26,3 +26,25 @@ npm init -y
  ````
 
  > :warning: **ATENÇÃO** ... `npm install --save-dev parcel@nightly` ...
+
+**`src\index.html`**
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser Client</title>
+</head>
+<body>
+    <script type="module" src="./main.ts"></script>
+</body>
+</html>
+```
+
+**`src\.d.ts`**
+ ```typescript
+ declare module "bundle-text:*" {
+    const val: string
+    export default val
+}
+ ```

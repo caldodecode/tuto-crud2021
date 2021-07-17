@@ -1,3 +1,66 @@
+:root {
+    --default-font: sans-serif
+}
+
 body {
-    background: lightseagreen;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background: #24252A;
+    padding: 1em;
+    display: flex;
+    color: #FFFFFF;
+    font-family: var(--default-font);
+    
+    button {
+        border: 0 none;
+        background-color: transparent;
+        color: #FFF;
+        transition: .3s;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        
+        &:hover {
+            border-radius: 25px;
+            background: #0385A8;
+        }
+    }
+    
+    div {
+        flex: 1 1 0;
+        align-items: center;
+        
+        &:first-child {
+            display: flex;
+            justify-content: flex-start;
+            text-transform: uppercase;
+        }
+        
+        &:last-child {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
+
+main {
+    background: #20B2AA;
+    padding: 1em;
+    flex: 1 1 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    overflow: auto;
+
+    > * {
+        border: 1px solid #D4D4D4;
+        flex: 0 0 30%;
+        margin: .25em;
+    }
 }

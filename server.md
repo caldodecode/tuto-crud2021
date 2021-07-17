@@ -55,7 +55,7 @@ Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo me
 npm init -y
  
 # instalação de bibliotecas necessárias para execução da aplicação
-npm install express sqlite sqlite3
+npm install express body-parser sqlite sqlite3
  
 # instalação de bibliotecas necessárias para desenvolvimento da aplicação
 npm install --save-dev typescript ts-node
@@ -71,7 +71,7 @@ npx tsc --init
  
 Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensíveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
  
-### 2.2.2 O que o comando `npm install express sqlite sqlite3` faz?
+### 2.2.2 O que o comando `npm install express body-parser sqlite sqlite3` faz?
 
 Ao executar esse comando, o `npm` baixa três bibliotecas `express`, `sqlite` e `sqlite3`, bem como as interdependências destas bibliotecas:
 - O `npm` baixa e salva todas estas bibliotecas em uma pasta chamada `node_modules`.
@@ -82,6 +82,7 @@ Ao executar esse comando, o `npm` baixa três bibliotecas `express`, `sqlite` e 
 Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 
 - *express*: Express.js é um framework para Node.js que fornece recursos mínimos para construção de servidores web. [maiores informações no site oficial](https://expressjs.com/).
+- *body-parser*: Esta biblioteca permite a manipulação de dados recebidos no corpo da requisição HTTP. [maiores informações no site oficial](https://expressjs.com/).
 - *sqlite3*: Esta biblioteca permite a manipulação de bancos de dados sqlite. [maiores informações no site oficial](https://github.com/mapbox/node-sqlite3).
 - *sqlite*: Esta biblioteca permite a utilização da biblioteca `sqlite3` de maneira assíncrona. [maiores informaçõe no site oficial](https://github.com/kriasoft/node-sqlite#readme).
  

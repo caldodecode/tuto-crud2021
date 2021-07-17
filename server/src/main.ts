@@ -8,6 +8,23 @@ void async function () {
 
     app.use(json())
 
+    app.use((request, response, next) => {
+        // Website you wish to allow to connect
+        response.setHeader('Access-Control-Allow-Origin', '*');
+
+        // Request methods you wish to allow
+        response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+        // Request headers you wish to allow
+        response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+        // Set to true if you need the website to include cookies in the requests sent
+        // to the API (e.g. in case you use sessions)
+        response.setHeader('Access-Control-Allow-Credentials', "true");
+
+        next()
+    })
+
     app.get("/pessoa", async (request, response) => {
         const result = await db.Pessoa.listar()
         response.json(result)
@@ -25,7 +42,7 @@ void async function () {
     })
 
     app.post("/pessoa", async (request, response) => {
-        try {   
+        try {
             const result = await db.Pessoa.adicionar(request.body)
             response.json(result)
         } catch (e) {
@@ -34,7 +51,7 @@ void async function () {
         }
     })
 
-    app.put("/pessoa/:id", async (request, response) => { 
+    app.put("/pessoa/:id", async (request, response) => {
         try {
             const id = parseInt(request.params.id)
             const result = await db.Pessoa.alterar(id, request.body)
@@ -42,7 +59,7 @@ void async function () {
         } catch (e) {
             response.statusCode = 500
             response.json(e)
-        }    
+        }
     })
 
     app.delete("/pessoa/:id", async (request, response) => {
