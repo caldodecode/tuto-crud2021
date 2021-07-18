@@ -62,7 +62,7 @@ Arraste a pasta `client-browser` para dentro de seu `vscode`, e abra o terminal,
 
 > :warning: **ATENÇÃO** é importante que a pasta **client-browser** seja arrastado e não a pasta **TUTORIAL** ou **SRC**
 
-> :warning: **ATENÇÃO** se você estiver fsazendo este tutorial antes da versão 2 do parcel ter sido lançada, substitua o comando de instalação do parcel por `npm install --save-dev parcel@nightly`
+> :warning: **ATENÇÃO** se você estiver seguindo este tutorial antes da versão 2 do parcel ter sido lançada, substitua o comando de instalação do parcel por `npm install --save-dev parcel@nightly`
 
 ```bash
 # criação do arquivo de configuração do projeto
