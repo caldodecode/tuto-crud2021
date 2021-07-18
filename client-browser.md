@@ -429,7 +429,7 @@ void async function carregarPessoas() {
 
 **`src\components\form-pessoa\index.ts`**
 ```typescript
-function carregarDadosPreCarregados(dadosPreCarregados?: { id?: number, [prop: string]: String | number }) {
+carregarDadosPreCarregados(dadosPreCarregados?: { id?: number, [prop: string]: String | number }) {
     if (dadosPreCarregados.id)
         this._id = dadosPreCarregados.id
 
