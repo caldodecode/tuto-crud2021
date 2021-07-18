@@ -1,8 +1,8 @@
-# 1 Servidor/API Rest API
+# 1. Servidor/API Rest API
 
 ...
 
-## 1.1 Conhecimentos Necessários
+## 1.1. Conhecimentos Necessários
 
 - Lógica de Programação
     -
@@ -23,7 +23,7 @@
 - HTTP
     - ["Vídeo - Dicionário do Programador"](https://www.youtube.com/watch?v=hwttZtWkXTk)
 
-# 2 Preparação do Ambiente de Desenvolvimento
+# 2. Preparação do Ambiente de Desenvolvimento
  
 Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o `NPM` instalados em seu computador:
 - para usuários windows acesse [o site do nodejs para download](https://nodejs.org/en/download/), baixe a versão adequada para sua máquina, e faça o clássico _next > next > finish_.
@@ -31,7 +31,7 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
    - Fedora: `dnf install nodejs`
    - Ubuntu: `apt install nodejs npm`
  
-## 2.1 Estrutura de arquivos inicial
+## 2.1. Estrutura de arquivos inicial
  
 Crie manualmente a seguinte estrutura de arquivos:
  
@@ -46,7 +46,7 @@ tutorial/             # pasta raiz geral de nosso projeto
 └─ test-pessoa.http   # onde escreveremos testes dos endpoints (necessário para testes antes do desenvolvimento da interface)
 ```
  
-## 2.2 Instalação de dependências
+## 2.2. Instalação de dependências
  
 Arraste a pasta `server` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal > New Terminal`, execute os comandos abaixo:
 
@@ -69,11 +69,11 @@ npm install --save-dev @types/node @types/express @types/sqlite3
 npx tsc --init
 ```
  
-### 2.2.1 O que o comando `npm init -y` faz?
+### 2.2.1. O que o comando `npm init -y` faz?
  
 Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensíveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
  
-### 2.2.2 O que o comando `npm install express body-parser sqlite sqlite3` faz?
+### 2.2.2. O que o comando `npm install express body-parser sqlite sqlite3` faz?
 
 Ao executar esse comando, o `npm` baixa três bibliotecas `express`, `sqlite` e `sqlite3`, bem como as interdependências destas bibliotecas:
 - O `npm` baixa e salva todas estas bibliotecas em uma pasta chamada `node_modules`.
@@ -88,24 +88,24 @@ Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 - *sqlite3*: Esta biblioteca permite a manipulação de bancos de dados sqlite. [maiores informações no site oficial](https://github.com/mapbox/node-sqlite3).
 - *sqlite*: Esta biblioteca permite a utilização da biblioteca `sqlite3` de maneira assíncrona. [maiores informaçõe no site oficial](https://github.com/kriasoft/node-sqlite#readme).
  
-### 2.2.3 O que o comando `npm install --save-dev typescript ts-node` faz?
+### 2.2.3. O que o comando `npm install --save-dev typescript ts-node` faz?
  
 Assim como o comando anterior, este também instala bibliotecas, nesta caso ele instala a biblioteca `typescript` e `ts-node`, estas bibliotecas são necessárias somente no momento de desenvolvimento da aplicação, por este motivo foi adicionado o parâmetro `--save-dev` ao comando. A única coisa que este comando difere do anterior é que ao invés de criar as referências dentro da chave `dependencies` do arquivo `package.json`, esta cria dentro da chave `devDependencies`, marcando-as assim como dependências necessárias somente para o desenvolvimento da aplicação.
 Abaixo temos uma breve descrição da utilidade de cada uma dessas bibliotecas:
 - *typescript*: TypeScript é um superconjunto de JavaScript desenvolvido pela Microsoft que adiciona tipagem e alguns outros recursos a linguagem. [maiores informaçõe no site oficial](https://www.typescriptlang.org/)
 - *ts-node*: Permite que o typescript seja executado sem a necessidade de criar os arquivos de distribuição da aplicação, facilitando assim o desenvolvimento da aplicação. [maiores informaçõe no site oficial](https://github.com/TypeStrong/ts-node#readme)
  
-### 2.2.4 O que o comando `npm install --save-dev @types/node @types/express @types/sqlite3` faz?
+### 2.2.4. O que o comando `npm install --save-dev @types/node @types/express @types/sqlite3` faz?
  
 Assim como o comando anterior, instala bibliotecas como bibliotecas necessárias para o desenvolvimento da aplicação, porém estas bibliotecas são utilizadas para ajudar o `vscode` com o _auto complete_, facilitando assim a escrita do código. De fato estas bibliotecas não são essenciais para o desenvolvimento, porém elas auxiliam o `typescript` e consequentemente o `vscode` a entender os tipos e dependências das bibliotecas `express`, `sqlite3` e do próprio `NodeJs`, isso melhora a capacidade do `vscode` em _auto completar_ trechos de código.
  
-### 2.2.5 O que o comando `npx tsc --init` faz?
+### 2.2.5. O que o comando `npx tsc --init` faz?
  
 Cria o arquivo de configuração do `typescript`, `tsconfig.json`, este arquivo é importante para informar como os arquivos `javascript` serão criados, neste arquivo temos informações como, para qual versão `javascript` o `typescript` deve compilar, em qual pasta esses arquivos devem ser gerados, dentre outras informações pertinentes.
  
 > É importante pontuar que neste momento utilizamos o comando com o prefixo `npx`,  este prefixo é utilizado quando se faz necessário executar um binário de uma  biblioteca instalada localmente ou seja, que está dentro da pasta `node_modules`, neste caso executamos o comando `tsc`, sigla para typescript compiler, com o parâmetro `--init`
  
-## 2.3 Estrutura final de arquivos
+## 2.3. Estrutura final de arquivos
  
 ```bash
 tutorial/                # criado manualmente
@@ -121,7 +121,7 @@ tutorial/                # criado manualmente
    └─ tsconfig.json      # criado ao executar `npx tsc --init`
 ```
  
-## 2.4 Configuração do projeto `package.json`
+## 2.4. Configuração do projeto `package.json`
  
 Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` parecido com o listado abaixo, precisaremos alterar algumas coisas e alterar outras:
  
@@ -190,7 +190,7 @@ o resultado final do nossa arquivo `package.json` deve ser a seguinte:
 ```
  
  
-## 2.5 Configuração do transpilador/typescript `tsconfig.json`
+## 2.5. Configuração do transpilador/typescript `tsconfig.json`
  
 O arquivo `tsconfig.json` que foi gerado no momento da execução do comando `npx tsc --init` tem todas as possíveis chaves de configurações, por isso é um arquivo relativamente grande, porém para este projeto iremos nos focar em apenas dois atributos definidos nele, o `"target"`, que define a versão do `javascript` para a qual iremos compilar/transpilar o `typescript` e. o `"outDir"`, que é a pasta onde os arquivos `javascript` serão salvos.
  
@@ -212,11 +212,11 @@ De forma resumida, o arquivo `tsconfig.json` ficará parecido com o seguinte:
 }
 ```
  
-## 2.6 Testando/Executando o ambiente
+## 2.6. Testando/Executando o ambiente
 
 Para que os testes a seguir sejam um pouco mais visual, é preciso alterar o arquivo `./src/main.ts`, adicionando a impressão de algo no terminal, então de forma temporária adicione o seguinte código ao arquivo `console.log("TESTE DE AMBIENTE: OK!")`, então se a frase `TESTE DE AMBIENTE: OK!` aparecer em seu terminal, significa que os testes foram bem sucedidos.
 
-### 2.6.1 Criando uma versão de distribuição 
+### 2.6.1. Criando uma versão de distribuição 
 
 Execute o comando abaixo para compilar os arquivos `TypeScript` para `Javascript`, se tudo ocorrer bem uma pasta chamada `dist` deve ser criada com os arquivos `javascript` de uma versão de distribuição.
 
@@ -230,14 +230,14 @@ Para executar a versão de distribuição que você acabou de criar execute o se
 node dist\main.js
 ```
 
-### 2.6.2 Testando a aplicação 
+### 2.6.2. Testando a aplicação 
 
 ```bash
 npm run dev
 ```
 
  
-# 3 Acesso e manipulação do banco de dados
+# 3. Acesso e manipulação do banco de dados
  
 O arquivo `./src/database.ts` será o nosso módulo responsável por criar o banco de dados `SQLite` e suas tabelas caso não existam, bem como exportar as funções necessárias para manipulação dos dados, logo abaixo temos o arquivo editado e comentado para que seja possível compreender seu funcionamento:
 
@@ -383,7 +383,7 @@ export async function initDatabase() {
 }
 ```
 
-## 3.1 Teste do módulo de acesso ao banco de dados
+## 3.1. Teste do módulo de acesso ao banco de dados
 
 **`./src/main.ts`**
 
@@ -463,7 +463,7 @@ Sr. Code de Cana: [
 ]
 ```
 
-# 4 Criação de _endpoints_
+# 4. Criação de _endpoints_
 
 `Endpoints` são caminhos para funcionalidades que a aplicações expõe para uso de terceiros, estes caminhos normalmente são acessíveis por HTTP, nesta aplicação para fins didáticos escreveremos todos os `endpoints` no arquivo principal `src\main.ts`, mas é extremamente importante que estas rotas de acesso sejam escritas de forma a propiciar manutenções futuras e não expor métodos e funções que possam pôr em risco a segurança da aplicação.
  
@@ -655,7 +655,7 @@ void async function () {
 }()
 ```
 
-# 5 Testar a API
+# 5. Testar a API
  
 Sem um cliente não é possível fazer o teste dos `endpoints` criados, por isso utilizaremos um plugin do `VSCode` chamado `REST Client` (plugin identifier `humao.rest-client`), para substituir temporariamente nossa aplicação cliente.
  
