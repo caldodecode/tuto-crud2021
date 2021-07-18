@@ -10,7 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/caldodecode/tuto-crud2021#readme",
   "devDependencies": {
     "@parcel/transformer-inline-string": "^2.0.0-nightly.771",
     "@parcel/transformer-sass": "^2.0.0-nightly.771",

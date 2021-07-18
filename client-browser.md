@@ -4,7 +4,7 @@
 
 ```bash
 tutorial/                        # pasta raiz geral de nosso projeto
-└─ client-browser/               # pasta da aplicação cliente -> arraste esta pasta para dentro do vscode
+└─ client-browser/               # pasta da aplicação cliente -> ARRASTE ESTA PASTA PARA DENTRO DO VSCODE
    └─ src/                       # pasta onde colocaremos nosso código fonte
       ├─ components/             #
       │  └─ form-pessoa          #

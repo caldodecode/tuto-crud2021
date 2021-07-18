@@ -37,7 +37,7 @@ Crie manualmente a seguinte estrutura de arquivos:
  
 ```bash
 tutorial/             # pasta raiz geral de nosso projeto
-├─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> arraste esta pasta para dentro do vscode
+├─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> ARRASTE ESTA PASTA PARA DENTRO DO VSCODE
 │  └─ src/            # pasta onde colocaremos nosso código fonte
 │     ├─ main.ts      # onde faremos todos os endpoints de nossa aplicação
 │     └─ database.ts  # onde serão escritas as regras de criação de tabelas e manipulação de dados no banco sqlite
