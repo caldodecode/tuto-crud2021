@@ -35,6 +35,8 @@ Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o
  
 Crie manualmente a seguinte estrutura de arquivos:
  
+> :warning: **ATENÇÃO** todos os arquivos texto devem ser criados com o encode UTF-8
+
 ```bash
 tutorial/             # pasta raiz geral de nosso projeto
 ├─ server/            # pasta da aplicação servidora (API) de nosso CRUD -> ARRASTE ESTA PASTA PARA DENTRO DO VSCODE

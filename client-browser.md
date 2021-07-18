@@ -2,6 +2,10 @@
 
 # 2
 
+Crie manualmente a seguinte estrutura de arquivos:
+
+> :warning: **ATENÇÃO** todos os arquivos texto devem ser criados com o encode UTF-8
+
 ```bash
 tutorial/                        # pasta raiz geral de nosso projeto
 └─ client-browser/               # pasta da aplicação cliente -> ARRASTE ESTA PASTA PARA DENTRO DO VSCODE
@@ -26,7 +30,6 @@ npm install --save-dev parcel
 ````
 
 > :warning: **ATENÇÃO** ... `npm install --save-dev parcel@nightly` ...
-
 
 **`package.json`**
 
