@@ -27,27 +27,43 @@ npm install --save-dev parcel
 
 > :warning: **ATENÇÃO** ... `npm install --save-dev parcel@nightly` ...
 
+
+**`package.json`**
+
+```jsonc
+{
+  "name": "client-browser",
+  "version": "0.0.1",
+  "description": "",
+  # linha `main` removido
+  "scripts": {
+    "dev": "parcel serve ./src/index.html --dist-dir=./dist-dev", # adicionado
+    "build": "parcel build ./src/index.html --dist-dir=./dist",   # adicionado
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "*"
+  }
+}
+```
+
+## 2.1 Arquivos iniciais
+
 **`src\index.html`**
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Browser Client</title>
     <script defer type="module" src="./main.ts"></script>
-</head>
-<body>
-    <header>
-        <div>
-            Browser Client
-        </div>
-        <div>
-            <button class="bt-adicionar-pessoa">adicionar pessoa</button>
-        </div>
-    </header>
-    <main>
-    </main>
-</body>
+  </head>
+  <body>
+      Olá mundo!
+  </body>
 </html>
 ```
 
@@ -63,7 +79,44 @@ body {
 }
 ```
 
-# 3 Aparência (estilo)
+## 2.2 Testando o projeto
+
+```bash
+npm run build
+```
+
+```bash
+npm run dev
+```
+
+# 3 Aparência (estilo) da página inicial
+
+**`src\index.html`**
+
+> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Browser Client</title>
+    <script defer type="module" src="./main.ts"></script>
+  </head>
+  <body>
+    <header>
+        <div>
+          Browser Client
+        </div>
+        <div>
+          <button class="bt-adicionar-pessoa">adicionar pessoa</button>
+        </div>
+    </header>
+    <main>
+    </main>
+  </body>
+</html>
+```
 
 **`src\main.scss`**
 
@@ -290,14 +343,8 @@ export class FormPessoa extends HTMLElement {
         this._buttons.salvar.addEventListener("click", ev => this._salvar())
     }
 
-    carregarDadosPreCarregados(dadosPreCarregados?: { id?: number, [prop: string]: String | number }) {
-        if (dadosPreCarregados.id)
-            this._id = dadosPreCarregados.id
-
-        Object.entries(dadosPreCarregados).forEach(([chave, valor]) => {
-            if (this._inputs[chave])
-                this._inputs[chave].value = valor as string
-        })
+    carregarDadosPreCarregados() {
+        // este método será desenvolvido futuramente neste tutorial
     }
 
     protected async _remover() {
@@ -360,7 +407,9 @@ elBtNovaPessoa.addEventListener("click", ev => {
 })
 ```
 
-# 6 Carregar pessoas
+# 6 Carregar pessoas já cadastrada
+
+Para que assim que a aplicação seja carregada, também sejam carregados todas as pessoas que já cadastramos no banco de dados, faremos uma função que fará uma requisição em nosso servidor e em seguida adicionará um componente `FormPessoa` para cada uma das pessoas existentes no banco de dados 
 
 **`src\main.ts`**
 
@@ -376,4 +425,17 @@ void async function carregarPessoas() {
         elMain.append(elFormPessoa)
     });
 }()
+```
+
+**`src\components\form-pessoa\index.ts`**
+```typescript
+carregarDadosPreCarregados(dadosPreCarregados?: { id?: number, [prop: string]: String | number }) {
+    if (dadosPreCarregados.id)
+        this._id = dadosPreCarregados.id
+
+    Object.entries(dadosPreCarregados).forEach(([chave, valor]) => {
+        if (this._inputs[chave])
+            this._inputs[chave].value = valor as string
+    })
+}
 ```
