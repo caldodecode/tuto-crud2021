@@ -35,10 +35,10 @@ npm install --save-dev parcel
   "name": "client-browser",
   "version": "0.0.1",
   "description": "",
-  # linha `main` removido
+  // linha `main` removido
   "scripts": {
-    "dev": "parcel serve ./src/index.html --dist-dir=./dist-dev", # adicionado
-    "build": "parcel build ./src/index.html --dist-dir=./dist",   # adicionado
+    "dev": "parcel serve ./src/index.html --dist-dir=./dist-dev", // adicionado
+    "build": "parcel build ./src/index.html --dist-dir=./dist",   // adicionado
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
