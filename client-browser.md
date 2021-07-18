@@ -66,11 +66,11 @@ Arraste a pasta `client-browser` para dentro de seu `vscode`, e abra o terminal,
 # criação do arquivo de configuração do projeto
 npm init -y
 
-# ...
+# instalação de bibliotecas necessárias para desenvolvimento da aplicação
 npm install --save-dev parcel
 ```
 
-> :warning: **ATENÇÃO** ... `npm install --save-dev parcel@nightly` ...
+> :warning: **ATENÇÃO** se você estiver fsazendo este tutorial antes da versão 2 do parcel ter sido lançada, substitua o comando de instalação do parcel por `npm install --save-dev parcel@nightly`
 
 ### 2.2.1. O que o comando `npm init -y` faz?
  
