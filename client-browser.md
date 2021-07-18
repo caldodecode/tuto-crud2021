@@ -1,6 +1,14 @@
 # 1 Cliente (browser)
 
-# 2
+# 2 Preparação do Ambiente de Desenvolvimento
+ 
+Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o `NPM` instalados em seu computador:
+- para usuários windows acesse [o site do nodejs para download](https://nodejs.org/en/download/), baixe a versão adequada para sua máquina, e faça o clássico _next > next > finish_.
+- para usuários Linux:
+   - Fedora: `dnf install nodejs`
+   - Ubuntu: `apt install nodejs npm`
+ 
+## 2.1 Estrutura de arquivos inicial
 
 Crie manualmente a seguinte estrutura de arquivos:
 
@@ -20,40 +28,6 @@ tutorial/                        # pasta raiz geral de nosso projeto
       ├─ main.scss               # 
       └─ main.ts                 # 
 ```
-
-```bash
-npm init -y
-```
-
-```bash
-npm install --save-dev parcel
-````
-
-> :warning: **ATENÇÃO** ... `npm install --save-dev parcel@nightly` ...
-
-**`package.json`**
-
-```jsonc
-{
-  "name": "client-browser",
-  "version": "0.0.1",
-  "description": "",
-  // linha `main: "index.js"` removida
-  "scripts": {
-    "dev": "parcel serve ./src/index.html --dist-dir=./dist-dev", // adicionado
-    "build": "parcel build ./src/index.html --dist-dir=./dist",   // adicionado
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "parcel": "*"
-  }
-}
-```
-
-## 2.1 Arquivos iniciais
 
 **`src\index.html`**
 ```html
@@ -82,11 +56,92 @@ body {
 }
 ```
 
-## 2.2 Testando o projeto
+## 2.2 Instalação de dependências
+
+Arraste a pasta `client-browser` para dentro de seu `vscode`, e abra o terminal, pelo menu `Terminal > New Terminal`, execute os comandos abaixo:
+
+> :warning: **ATENÇÃO** é importante que a pasta **client-browser** seja arrastado e não a pasta **TUTORIAL** ou **SRC**
+
+```bash
+# criação do arquivo de configuração do projeto
+npm init -y
+
+# ...
+npm install --save-dev parcel
+````
+
+> :warning: **ATENÇÃO** ... `npm install --save-dev parcel@nightly` ...
+
+### 2.2.1 O que o comando `npm init -y` faz?
+ 
+Quando você executa esse comando o `npm` cria um arquivo chamado `package.json`, este arquivo é responsável por manter informações sensíveis ao seu projeto como, quais bibliotecas são necessárias para o desenvolvimento e execução da aplicação, comandos para execução e depuração da aplicação, autor, palavras chaves, versão da aplicação dentre outras.
+
+### 2.2.2 O que o comando `npm install --save-dev parcel`
+
+...
+
+## 2.3 Estrutura final de arquivos
+
+...
+
+## 2.4 Configuração do projeto `package.json`
+ 
+Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` parecido com o listado abaixo, precisaremos alterar algumas coisas e alterar outras:
+
+**`package.json`**
+
+```jsonc
+{
+  "name": "client-browser",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "*"
+  }
+}
+```
+
+...
+
+o resultado final do nossa arquivo `package.json` deve ser a seguinte:
+
+**`package.json`**
+
+```jsonc
+{
+  "name": "client-browser",
+  "version": "0.0.1",
+  "description": "",
+  // linha `"main": "index.js"` removida
+  "scripts": {
+    "dev": "parcel serve ./src/index.html --dist-dir=./dist-dev",  // adicionado
+    "build": "parcel build ./src/index.html --dist-dir=./dist",    // adicionado
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "*"
+  }
+}
+```
+
+## 2.6 Testando/Executando o ambiente
+
+### 2.6.1 Criando uma versão de distribuição
 
 ```bash
 npm run build
 ```
+### 2.6.2 Testando a aplicação 
 
 ```bash
 npm run dev
