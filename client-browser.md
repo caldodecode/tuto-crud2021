@@ -58,6 +58,18 @@ import "./main.scss"
 
 **`src\main.scss`**
 ```scss
+body {
+    background: #20B2AA;
+}
+```
+
+# 3 Aparência (estilo)
+
+**`src\main.scss`**
+
+> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+
+```scss
 :root {
     --default-font: sans-serif
 }
@@ -125,8 +137,6 @@ main {
     }
 }
 ```
-
-# 3 Aparência (estilo)
 
 # 4 Componentes (formulário)
 
