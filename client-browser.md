@@ -184,9 +184,7 @@ npm run dev
 
 # 3. Estrutura e Aparência/estilo da página inicial
 
-> :warning: **ATENÇÃO** Este tópico está sendo detalhado, caso encontre problemas ao fazê-lo, contacte o professor.
-
-Neste tópico será desenvolvido a aparência da página inicial da aplicação, para isso será necessário alterar os arquivos `src\index.html` e `src\main.sass`, estes arquivos serão comentados linha a linha para que seja possível compreender seu funcionamento, considerando que nesta aplicação está sendo utilizado o `Parcel` como `Bundler`, não será importado o arquivo de estilo diretamente no arquivo `src\index.html`, portanto faz-se necessário a alteração do arquivo `src\main.ts` para que o mesmo importe o arquivos de estilo, `src\main.scss`.
+Neste tópico será desenvolvido a aparência e estrutora da página inicial da aplicação, para isso será necessário alterar os arquivos `src\index.html` e `src\main.scss`, estes arquivos serão comentados linha-a-linha para que seja possível compreender seu funcionamento, considerando que nesta aplicação está sendo utilizado o `Parcel` como `Bundler`, não será importado o arquivo de estilo diretamente no `src\index.html`, portanto faz-se necessário a alteração também do arquivo `src\main.ts` para que o mesmo importe o arquivo de estilo `src\main.scss`.
 
 **`src\index.html`**
 
