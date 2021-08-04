@@ -182,15 +182,17 @@ Para testar a aplicação em tempo de desenvolvimento o comando a seguir deve se
 npm run dev
 ```
 
-# 3. Aparência (estilo) da página inicial
+# 3. Estrutura e Aparência/estilo da página inicial
 
 > :warning: **ATENÇÃO** Este tópico está sendo detalhado, caso encontre problemas ao fazê-lo, contacte o professor.
 
+Neste tópico será desenvolvido a aparência da página inicial da aplicação, para isso será necessário alterar os arquivos `src\index.html` e `src\main.sass`, estes arquivos serão comentados linha a linha para que seja possível compreender seu funcionamento, considerando que nesta aplicação está sendo utilizado o `Parcel` como `Bundler`, não será importado o arquivo de estilo diretamente no arquivo `src\index.html`, portanto faz-se necessário a alteração do arquivo `src\main.ts` para que o mesmo importe o arquivos de estilo, `src\main.scss`.
+
 **`src\index.html`**
 
-> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+> :warning: **ATENÇÃO** note que comentários em arquivos HTML são extremamente desencorajados, pois tratam-se de arquivos que serão trafegados pela web, quanto menos bites desnecessários melhor, pois torna-se menos custoso para que estes arquivos sejam enviados e recebidos. 
 
-> :warning: **ATENÇÃO** note que comentários em arquivos HTML são extremamente desencorajados, pois tratam-se de arquivos que serão trafegados pela web, e quanto menos bites desnecessários melhor, pois torna-se menos custoso para que estes arquivos sejam enviados e recebidos. 
+> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
 
 ```html
 <!-- 
@@ -261,75 +263,97 @@ npm run dev
 </html>
 ```
 
+**`src\main.ts`**
+
+> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+
+```typescript
+// importa o arquivo de estilo
+import "./main.scss" 
+```
+
 **`src\main.scss`**
 
 > :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
 
 ```scss
+// seleciona o elemento raiz do contexto atual
 :root {
+    // cria variável `default-font`, variáveis CSS é a forma melhor indicada para estilização de web components e também 
+    // torna-se útil para manipulação de valores por javascript, além de ser um excelente maneira de reaproveitamento de 
+    // estilos em arquivos CSS.
     --default-font: sans-serif
 }
-
+ 
+// seleciona o elemento body
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+    display: flex;          // define a forma de apresentação deste elemento como flex
+    flex-direction: column; // define que os elementos filhos deste serão apresentados em colunas 
+    height: 100vh;          // define que a altura deste elemento é 100% da altura do view port
+    padding: 0;             // remove a margem interna do elemento
+    margin: 0;              // remove a margem do elemento
 }
-
+ 
+// seleciona o elemento header
 header {
-    background: #24252A;
-    padding: 1em;
-    display: flex;
-    color: #FFFFFF;
-    font-family: var(--default-font);
+    background: #24252A;              // define a cor de fundo do elemento
+    padding: 1em;                     // define a margem interna do elemento como sendo igual ao tamanho de um M maiúsculo
+    display: flex;                    // define a forma de apresentação deste elemento como flex
+    color: #FFFFFF;                   // define a cor da fonte do elemento e seus filhos
+    font-family: var(--default-font); // define a fonte do elemento e seus filhos como sendo a mesma da variável `default-font`
     
+    // seleciona os elemento button que sejam filhos do elemento header
     button {
-        border: 0 none;
-        background-color: transparent;
-        color: #FFF;
-        transition: .3s;
-        padding: 0.5em 1em;
-        cursor: pointer;
+        border: 0 none;           // remove a borda do elemento
+        background: transparent;  // define a cor de fundo do elemento como sendo transparente 
+        color: #FFFFFF;           // define a cor da letra do elemento
+        transition: .3s;          // define que a transição de estilos do elemento é de 300ms
+        padding: 0.5em 1em;       // define a margem interna como sendo topo e baixo igual a meio M e direita e esquerda como 1 M
+        cursor: pointer;          // define o ponteiro do mouse como `pointer` quando estiver sobre este elemento
         
+        // seleciona os elemento button quando estão com o mouse sobre e que são filhos do elemento header
         &:hover {
-            border-radius: 25px;
-            background: #0385A8;
+            border-radius: 25px;  // define arredondamento da borda em 25px
+            background: #0385A8;  // define a cor de fundo do elemento 
         }
     }
     
+    // seleciona os elementos div filhos do elemento header
     div {
-        flex: 1 1 0;
-        align-items: center;
+        display: flex;       // define a forma de apresentação deste elemento como flex
+        flex: 1 1 0;         // define que cada um dos elementos irá ocupar uma fração do espaço disponível
+        align-items: center; // define que o conteúdo destes elementos devem cer centralizados verticalmente
         
+        // seleciona a primeira div filha do elemento header
         &:first-child {
-            display: flex;
-            justify-content: flex-start;
-            text-transform: uppercase;
+            justify-content: flex-start; // define que os conteúdos deste elemento devam alinhar-se no início (neste caso à esquerda)
+            text-transform: uppercase;   // define que o texto deste elemento devam ser em caixa alta
         }
         
+        // seleciona a última div filha do elemento header
         &:last-child {
-            display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; // define que os conteúdos deste elemento devam alinhar-se no final (neste caso à direita)
         }
     }
 }
-
+ 
+// seleciona o elemento main
 main {
-    background: #20B2AA;
-    padding: 1em;
-    flex: 1 1 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
-    overflow: auto;
-
+    display: flex;             // define a forma de apresentação deste elemento como flex
+    padding: 1em;              // define as margens internas como sendo do mesmo tamanho de um M maiúsculo
+    flex: 1 1 0;               // define que este deva ocupar uma fração do espaço disponível de seu elemento pai (neste caso o body)
+    flex-wrap: wrap;           // define que se necessário os elementos filhos deste devam quebrar linhas
+    justify-content: center;   // define que os elementos filhos deste devam ser centralizado horizontalmente
+    align-content: flex-start; // define que os elementos filhos deste devam ser alinhados verticalmente no início (neste caso no topo)
+ 
+    background: #20B2AA;       // define a cor de fundo do elemento
+    overflow: auto;            // define que se necessário o elemento apresentará barras de rolagem
+ 
+    // seleciona os elementos filhos diretos do elemento main
     > * {
-        border: 1px solid #D4D4D4;
-        flex: 0 0 30%;
-        margin: .25em;
+        border: 1px solid #D4D4D4; // define as bordas do elemento como sendo da espessura de um pixel, e que estas sejam sólidas e cinza
+        flex: 0 0 30%;             // define que este elemento deva ocupar 30% do espaço disponível em seu elemento pai (neste caso main)
+        margin: .25em;             // define que a margem deste elemento é de 0.25 do tamanho de um M maiúsculo
     }
 }
 ```
