@@ -184,6 +184,8 @@ npm run dev
 
 # 3. Aparência (estilo) da página inicial
 
+> :warning: **ATENÇÃO** Este tópico está sendo detalhado, caso encontre problemas ao fazê-lo, contacte o professor.
+
 **`src\index.html`**
 
 > :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
@@ -285,6 +287,8 @@ main {
 ```
 
 # 4. Componentes (formulário)
+
+> :warning: **ATENÇÃO** Este tópico está sendo detalhado, caso encontre problemas ao fazê-lo, contacte o professor.
 
 **`src\components\form-pessoa\form-pessoa.html`**
 ```html
@@ -501,6 +505,8 @@ elBtNovaPessoa.addEventListener("click", ev => {
 ```
 
 # 5. Carregar pessoas já cadastrada
+
+> :warning: **ATENÇÃO** Este tópico está sendo detalhado, caso encontre problemas ao fazê-lo, contacte o professor.
 
 Para que assim que a aplicação seja carregada, também sejam carregados todas as pessoas que já cadastramos no banco de dados, faremos uma função que fará uma requisição em nosso servidor e em seguida adicionará um componente `FormPessoa` para cada uma das pessoas existentes no banco de dados 
 
