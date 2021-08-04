@@ -11,6 +11,6 @@ A API deste tutorial será desenvolvida utilizando TypeScript/NodeJs/ExpressJs/S
 Este tutorial tem mais de uma alternativa para cliente, justamente para que este possa ser utilizado em múltiplas disciplinas, a seguir temos os links para os clientes que este tutorial aborda:
  
 - [Browser: Parcel/TypeScript/SASS/HTML](client-browser.md)
-- Browser: HTML/CSS/Javascript ::warning:: ainda em desenvolvimento
-- Mobile Flutter ::warning:: ainda em desenvolvimento
-- Mobile Kotlin ::warning:: ainda em desenvolvimento
+- Browser: HTML/CSS/Javascript :warning: ainda em desenvolvimento
+- Mobile Flutter: :warning: ainda em desenvolvimento
+- Mobile Kotlin: :warning: ainda em desenvolvimento
