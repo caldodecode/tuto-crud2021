@@ -91,7 +91,7 @@ Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` pa
 ```jsonc
 {
   "name": "client-browser",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -190,7 +190,7 @@ Neste tópico será desenvolvido a aparência e estrutora da página inicial da 
 
 > :bulb: **DICA** comentários em arquivos HTML são extremamente desencorajados, pois tratam-se de arquivos que serão trafegados pela web, quanto menos bites desnecessários melhor, pois torna-se menos custoso para que estes arquivos sejam enviados e recebidos. 
 
-> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+> :warning: **ATENÇÃO** substitua o conteúdo já existente no arquivo e adicione este trecho de código no lugar
 
 ```html
 <!-- 
@@ -263,7 +263,7 @@ Neste tópico será desenvolvido a aparência e estrutora da página inicial da 
 
 **`src\main.ts`**
 
-> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+> :warning: **ATENÇÃO** substitua o conteúdo já existente no arquivo e adicione este trecho de código no lugar
 
 ```typescript
 // importa o arquivo de estilo
@@ -272,7 +272,7 @@ import "./main.scss"
 
 **`src\main.scss`**
 
-> :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
+> :warning: **ATENÇÃO** substitua o conteúdo já existente no arquivo e adicione este trecho de código no lugar
 
 ```scss
 // seleciona o elemento raiz do contexto atual
