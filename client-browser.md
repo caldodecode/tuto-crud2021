@@ -1,5 +1,7 @@
 # 1. Cliente (browser)
 
+...
+
 # 2. Preparação do Ambiente de Desenvolvimento
  
 Antes de iniciar é necessário certificar-se de que você possui o `NodeJs` e o `NPM` instalados em seu computador:
@@ -17,43 +19,16 @@ Crie manualmente a seguinte estrutura de arquivos:
 ```bash
 tutorial/                        # pasta raiz geral de nosso projeto
 └─ client-browser/               # pasta da aplicação cliente -> ARRASTE ESTA PASTA PARA DENTRO DO VSCODE
-   └─ src/                       # pasta onde colocaremos nosso código fonte
-      ├─ components/             #
-      │  └─ form-pessoa          #
-      │     ├─ form-pessoa.html  #
-      │     ├─ form-pessoa.scss  #
-      │     └─ index.ts          # 
-      ├─ .d.ts                   #
-      ├─ index.html              # 
-      ├─ main.scss               # 
-      └─ main.ts                 # 
-```
-
-**`src\index.html`**
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <title>Browser Client</title>
-    <script defer type="module" src="./main.ts"></script>
-  </head>
-  <body>
-      Olá mundo!
-  </body>
-</html>
-```
-
-**`src\main.ts`**
-```typescript
-import "./main.scss"
-```
-
-**`src\main.scss`**
-```scss
-body {
-    background: #20B2AA;
-}
+   └─ src/                       # pasta onde o código fonte da aplicação
+      ├─ components/             # pasta onde serão criados componentes reutilizáveis de inteface 
+      │  └─ form-pessoa          # pasta do componente de formulário para cadastro de pessoas
+      │     ├─ form-pessoa.html  # arquivo com a estrutura HTML do componente
+      │     ├─ form-pessoa.scss  # arquivo com a aparência/estilo do componente
+      │     └─ index.ts          # arquivo com as regras e interações do componente
+      ├─ def.d.ts                # arquivo com tipos necessários para o typescript
+      ├─ index.html              # arquivo com a estrutura HTML principal da aplicação
+      ├─ main.scss               # arquivo com a aparência/estilo pricipal da aplicação
+      └─ main.ts                 # arquivo principal de funcuinalidade da aplicação
 ```
 
 ## 2.2. Instalação de dependências
@@ -78,11 +53,34 @@ Quando executado este comando o `npm` cria um arquivo chamado `package.json`, es
 
 ### 2.2.2. O que o comando `npm install --save-dev parcel`
 
-...
+Ao executar esse comando o `npm` baixa o bundler `parcel`, este será responsável por compilar o projeto, tanto para testes como para a versão final:
+- O `npm` baixa e salva esta biblioteca em uma pasta chamada `node_modules`.
+- A bibliotecada depende de outras bibliotecas, portanto, o `npm` se encarregará em baixar também estas bibliotecas e, assim como as demais, irá salvá-las na pasta `node_modules`.
+- Para controle do projeto após baixar a biblioteca, o `npm` as lista-ra no arquivo `package.json` dentro da chave `dependencies`.
+- As interdependências destas bibliotecas são listadas no arquivo `package-lock.json`, para controle interno do `npm`.
 
 ## 2.3. Estrutura final de arquivos
 
-...
+```bash
+tutorial/                        # criado manualmente
+└─ client-browser/               # criado manualmente
+   ├─ .parcel-cache              # criado futuramente ao executar `npm run dev` ou `npm run build`
+   ├─ dist/                      # criado futuramente ao executar `npm run build`
+   ├─ dist-dev/                  # criado futuramente ao executar `npm run dev`
+   ├─ node_modules/              # criado ao executar `npm install ...`
+   ├─ src/                       # criado manualmente
+   │  ├─ components/             # criado manualmente
+   │  │  └─ form-pessoa          # criado manualmente
+   │  │     ├─ form-pessoa.html  # criado manualmente
+   │  │     ├─ form-pessoa.scss  # criado manualmente
+   │  │     └─ index.ts          # criado manualmente
+   │  ├─ def.d.ts                # criado manualmente
+   │  ├─ index.html              # criado manualmente
+   │  ├─ main.scss               # criado manualmente
+   │  └─ main.ts                 # criado manualmente
+   ├─ package.json               # criado ao executar `npm init`
+   └─ package-lock.json          # criado ao executar `npm install ...`
+```
 
 ## 2.4. Configuração do projeto `package.json`
  
@@ -136,12 +134,49 @@ o resultado final do nossa arquivo `package.json` deve ser a seguinte:
 
 ## 2.5. Testando/Executando o ambiente
 
+Para que o teste da aplicação seja mais visual, é sugerido que os arquivos `src\index.html`, `src\main.ts` e `src\main.scss` tenham algum conteúdo, portanto seguem sugestões de conteúdo para estes arquivos, note que estes conteúdos serão utilizados somente para teste da aplicação e futuramente serão alterados ou possivelmente totalmente substituídos.
+
+**`src\index.html`**
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Browser Client</title>
+    <script defer type="module" src="./main.ts"></script>
+  </head>
+  <body>
+      Olá do mundo do HTML!
+  </body>
+</html>
+```
+
+**`src\main.ts`**
+```typescript
+import "./main.scss"
+
+document.innerHTML += "Olá do mundo do TypeScript! "
+```
+
+**`src\main.scss`**
+```scss
+body {
+    &::before {
+        content: "Olá do mundo do SASS!"
+    }
+}
+```
+
 ### 2.5.1. Criando uma versão de distribuição
+
+Para testar a criação da versão final de distribuição da aplicação o comando a seguir deve ser executado no terminal, isso deve criar uma pasta chama `dist` e seu conteúdo é a versão dos arquivos prontos para serem distribuídos:
 
 ```bash
 npm run build
 ```
 ### 2.5.2. Testando a aplicação 
+
+Para testar a aplicação em tempo de desenvolvimento o comando a seguir deve ser executado no terminal, isso iniciará um servidor que pode ser acessado em qualquer navegador web moderno pelo endereço `http://127.0.0.1:1234` ou `http://localhost:1234`:
 
 ```bash
 npm run dev
