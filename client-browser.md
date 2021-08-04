@@ -188,7 +188,7 @@ Neste tópico será desenvolvido a aparência e estrutora da página inicial da 
 
 **`src\index.html`**
 
-> :warning: **ATENÇÃO** note que comentários em arquivos HTML são extremamente desencorajados, pois tratam-se de arquivos que serão trafegados pela web, quanto menos bites desnecessários melhor, pois torna-se menos custoso para que estes arquivos sejam enviados e recebidos. 
+> :bulb: **DICA** comentários em arquivos HTML são extremamente desencorajados, pois tratam-se de arquivos que serão trafegados pela web, quanto menos bites desnecessários melhor, pois torna-se menos custoso para que estes arquivos sejam enviados e recebidos. 
 
 > :warning: **ATENÇÃO** apague o conteúdo já existente no arquivo e adicione este trecho de código no lugar
 
