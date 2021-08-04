@@ -287,73 +287,107 @@ import "./main.scss"
  
 // seleciona o elemento body
 body {
-    display: flex;          // define a forma de apresentação deste elemento como flex
-    flex-direction: column; // define que os elementos filhos deste serão apresentados em colunas 
-    height: 100vh;          // define que a altura deste elemento é 100% da altura do view port
-    padding: 0;             // remove a margem interna do elemento
-    margin: 0;              // remove a margem do elemento
+    // define a forma de apresentação deste elemento como flex
+    display: flex;          
+    // define que os elementos filhos deste serão apresentados em colunas 
+    flex-direction: column; 
+    // define que a altura deste elemento é 100% da altura do view port
+    height: 100vh;          
+    // remove a margem interna do elemento
+    padding: 0;             
+    // remove a margem do elemento
+    margin: 0;              
 }
  
 // seleciona o elemento header
 header {
-    background: #24252A;              // define a cor de fundo do elemento
-    padding: 1em;                     // define a margem interna do elemento como sendo igual ao tamanho de um M maiúsculo
-    display: flex;                    // define a forma de apresentação deste elemento como flex
-    color: #FFFFFF;                   // define a cor da fonte do elemento e seus filhos
-    font-family: var(--default-font); // define a fonte do elemento e seus filhos como sendo a mesma da variável `default-font`
+    // define a cor de fundo do elemento
+    background: #24252A;              
+    // define a margem interna do elemento como sendo igual ao tamanho de um M maiúsculo
+    padding: 1em;                     
+    // define a forma de apresentação deste elemento como flex
+    display: flex;                    
+    // define a cor da fonte do elemento e seus filhos
+    color: #FFFFFF;                   
+    // define a fonte do elemento e seus filhos como sendo a mesma da variável `default-font`
+    font-family: var(--default-font); 
     
     // seleciona os elemento button que sejam filhos do elemento header
     button {
-        border: 0 none;           // remove a borda do elemento
-        background: transparent;  // define a cor de fundo do elemento como sendo transparente 
-        color: #FFFFFF;           // define a cor da letra do elemento
-        transition: .3s;          // define que a transição de estilos do elemento é de 300ms
-        padding: 0.5em 1em;       // define a margem interna como sendo topo e baixo igual a meio M e direita e esquerda como 1 M
-        cursor: pointer;          // define o ponteiro do mouse como `pointer` quando estiver sobre este elemento
+        // remove a borda do elemento
+        border: 0 none;           
+        // define a cor de fundo do elemento como sendo transparente 
+        background: transparent;  
+        // define a cor da letra do elemento
+        color: #FFFFFF;           
+        // define que a transição de estilos do elemento é de 300ms
+        transition: .3s;          
+        // define a margem interna como sendo topo e baixo igual a meio M e direita e esquerda como 1 M
+        padding: 0.5em 1em;       
+        // define o ponteiro do mouse como `pointer` quando estiver sobre este elemento
+        cursor: pointer;          
         
         // seleciona os elemento button quando estão com o mouse sobre e que são filhos do elemento header
         &:hover {
-            border-radius: 25px;  // define arredondamento da borda em 25px
-            background: #0385A8;  // define a cor de fundo do elemento 
+            // define arredondamento da borda em 25px
+            border-radius: 25px;  
+            // define a cor de fundo do elemento 
+            background: #0385A8;  
         }
     }
     
     // seleciona os elementos div filhos do elemento header
     div {
-        display: flex;       // define a forma de apresentação deste elemento como flex
-        flex: 1 1 0;         // define que cada um dos elementos irá ocupar uma fração do espaço disponível
-        align-items: center; // define que o conteúdo destes elementos devem cer centralizados verticalmente
+        // define a forma de apresentação deste elemento como flex
+        display: flex;       
+        // define que cada um dos elementos irá ocupar uma fração do espaço disponível
+        flex: 1 1 0;         
+        // define que o conteúdo destes elementos devem cer centralizados verticalmente
+        align-items: center; 
         
         // seleciona a primeira div filha do elemento header
         &:first-child {
-            justify-content: flex-start; // define que os conteúdos deste elemento devam alinhar-se no início (neste caso à esquerda)
-            text-transform: uppercase;   // define que o texto deste elemento devam ser em caixa alta
+            // define que os conteúdos deste elemento devam alinhar-se no início (neste caso à esquerda)
+            justify-content: flex-start; 
+            // define que o texto deste elemento devam ser em caixa alta
+            text-transform: uppercase;   
         }
         
         // seleciona a última div filha do elemento header
         &:last-child {
-            justify-content: flex-end; // define que os conteúdos deste elemento devam alinhar-se no final (neste caso à direita)
+            // define que os conteúdos deste elemento devam alinhar-se no final (neste caso à direita)
+            justify-content: flex-end; 
         }
     }
 }
  
 // seleciona o elemento main
 main {
-    display: flex;             // define a forma de apresentação deste elemento como flex
-    padding: 1em;              // define as margens internas como sendo do mesmo tamanho de um M maiúsculo
-    flex: 1 1 0;               // define que este deva ocupar uma fração do espaço disponível de seu elemento pai (neste caso o body)
-    flex-wrap: wrap;           // define que se necessário os elementos filhos deste devam quebrar linhas
-    justify-content: center;   // define que os elementos filhos deste devam ser centralizado horizontalmente
-    align-content: flex-start; // define que os elementos filhos deste devam ser alinhados verticalmente no início (neste caso no topo)
- 
-    background: #20B2AA;       // define a cor de fundo do elemento
-    overflow: auto;            // define que se necessário o elemento apresentará barras de rolagem
+    // define a forma de apresentação deste elemento como flex
+    display: flex;             
+    // define as margens internas como sendo do mesmo tamanho de um M maiúsculo
+    padding: 1em;              
+    // define que este deva ocupar uma fração do espaço disponível de seu elemento pai (neste caso o body)
+    flex: 1 1 0;               
+    // define que se necessário os elementos filhos deste devam quebrar linhas
+    flex-wrap: wrap;           
+    // define que os elementos filhos deste devam ser centralizado horizontalmente
+    justify-content: center;   
+    // define que os elementos filhos deste devam ser alinhados verticalmente no início (neste caso no topo)
+    align-content: flex-start; 
+    // define a cor de fundo do elemento
+    background: #20B2AA;       
+    // define que se necessário o elemento apresentará barras de rolagem
+    overflow: auto;            
  
     // seleciona os elementos filhos diretos do elemento main
     > * {
-        border: 1px solid #D4D4D4; // define as bordas do elemento como sendo da espessura de um pixel, e que estas sejam sólidas e cinza
-        flex: 0 0 30%;             // define que este elemento deva ocupar 30% do espaço disponível em seu elemento pai (neste caso main)
-        margin: .25em;             // define que a margem deste elemento é de 0.25 do tamanho de um M maiúsculo
+        // define as bordas do elemento como sendo da espessura de um pixel, e que estas sejam sólidas e cinza
+        border: 1px solid #D4D4D4; 
+        // define que este elemento deva ocupar 30% do espaço disponível em seu elemento pai (neste caso main)
+        flex: 0 0 30%;             
+        // define que a margem deste elemento é de 0.25 do tamanho de um M maiúsculo
+        margin: .25em;             
     }
 }
 ```
