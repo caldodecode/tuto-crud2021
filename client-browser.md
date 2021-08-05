@@ -17,7 +17,7 @@ Crie manualmente a seguinte estrutura de arquivos:
 > :warning: **ATENÇÃO** todos os arquivos texto devem ser criados com o encode UTF-8
 
 ```bash
-tutorial/                        # pasta raiz geral de nosso projeto
+tutorial/                        # pasta raiz geral do projeto
 └─ client-browser/               # pasta da aplicação cliente -> ARRASTE ESTA PASTA PARA DENTRO DO VSCODE
    └─ src/                       # pasta onde o código fonte da aplicação
       ├─ components/             # pasta onde serão criados componentes reutilizáveis de inteface 
@@ -612,7 +612,7 @@ elBtNovaPessoa.addEventListener("click", ev => {
 
 > :warning: **ATENÇÃO** Este tópico está sendo detalhado, caso encontre problemas ao fazê-lo, contacte o professor.
 
-Para que assim que a aplicação seja carregada, também sejam carregados todas as pessoas que já cadastramos no banco de dados, faremos uma função que fará uma requisição em nosso servidor e em seguida adicionará um componente `FormPessoa` para cada uma das pessoas existentes no banco de dados 
+Para que assim que a aplicação seja carregada, também sejam carregados todas as pessoas que já cadastramos no banco de dados, para isso será desenvolvido uma função que fará requisição ao servidor e em seguida adicionará um componente `FormPessoa` para cada uma das pessoas existentes no banco de dados.
 
 **`src\main.ts`**
 
