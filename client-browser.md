@@ -84,7 +84,7 @@ tutorial/                        # criado manualmente
 
 ## 2.4. Configuração do projeto `package.json`
  
-Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` parecido com o listado abaixo, precisaremos alterar algumas coisas e alterar outras:
+Se tudo ocorreu bem até este ponto, o arquivo `package.json` deve estar parecido com o apresentado abaixo, precisaremos alterar algumas coisas e alterar outras:
 
 **`package.json`**
 
@@ -106,16 +106,16 @@ Se tudo ocorreu bem até este ponto, você deve ter um arquivo `package.json` pa
 }
 ```
 
-...
-
-o resultado final do nossa arquivo `package.json` deve ser a seguinte:
+Para execução e testes do projeto será necessário a inclusão de dois scripts no arquivo `package.json`, o primeiro para testes, este será útil durante o desenvolvimento, pois com ele será possível a execução a aplicação em um servidor HTTP próprio do `Parcel`, já o segundo script permitirá a compilação dos arquivos para a versão final da aplicação. Além destas modificações é necessário a remoção da linha que define o entrypoint da aplicação, linha `"main": ""/index.js`
+ 
+Após as alterações o arquivo `package.json` deve ser parecido com o seguinte, note que os comentários devem ser removidos:
 
 **`package.json`**
 
 ```jsonc
 {
   "name": "client-browser",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   // linha `"main": "index.js"` removida
   "scripts": {
