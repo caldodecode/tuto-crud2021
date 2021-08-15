@@ -44,7 +44,7 @@ Arraste a pasta `client-browser` para dentro de seu `vscode`, e abra o terminal,
 npm init -y
 
 # instalação de bibliotecas necessárias para desenvolvimento da aplicação
-npm install --save-dev parcel
+npm install --save-dev parcel@nightly
 ```
 
 ### 2.2.1. O que o comando `npm init -y` faz?
